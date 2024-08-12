@@ -2,12 +2,14 @@
 .yarn
 .cache
 *.pyc
-node_modules
-yarn-error.log
+node_modules/
+*.log
+*.lock
 
 # Build directory
 /build
 /dist
+__pycache__/
 .DS_Store
 .sass-cache/
 _posts/
