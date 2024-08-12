@@ -75,12 +75,29 @@ const SNOWBOARD_TITLE = IS_CHINESE ? '单板滑雪' : 'Snowboard';
 const SKI_TITLE = IS_CHINESE ? '双板滑雪' : 'Ski';
 const ROAD_TRIP_TITLE = IS_CHINESE ? '自驾' : 'RoadTrip';
 const FLIGHT_TITLE = IS_CHINESE ? '飞行' : 'Flight';
+const WALK_TITLE = IS_CHINESE ? "散步" : "CityWalk";
+
+// run time
+const MORNING_TIME_TITLE = IS_CHINESE ? '清晨' : 'Morning ';
+const MIDDAY_TIME_TITLE = IS_CHINESE ? '午间' : 'Midday ';
+const AFTERNOON_TIME_TITLE = IS_CHINESE ? '午后' : 'Afternoon ';
+const EVENING_TIME_TITLE = IS_CHINESE ? '傍晚' : 'Evening ';
+const NIGHT_TIME_TITLE = IS_CHINESE ? '夜晚' : 'Night ';
+
+const WORKOUT_TIME_TITLES = {
+  MORNING_TIME_TITLE,
+  MIDDAY_TIME_TITLE,
+  AFTERNOON_TIME_TITLE,
+  EVENING_TIME_TITLE,
+  NIGHT_TIME_TITLE,
+};
 
 const RUN_TITLES = {
   FULL_MARATHON_RUN_TITLE,
   HALF_MARATHON_RUN_TITLE,
   RUN_TITLE,
   TRAIL_RUN_TITLE,
+  WALK_TITLE,
 
   RIDE_TITLE,
   INDOOR_RIDE_TITLE,
@@ -107,6 +124,7 @@ export {
   ROAD_LABEL_DISPLAY,
   INFO_MESSAGE,
   RUN_TITLES,
+  WORKOUT_TIME_TITLES,
   USE_ANIMATION_FOR_GRID,
   USE_DASH_LINE,
   LINE_OPACITY,

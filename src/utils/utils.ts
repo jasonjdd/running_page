@@ -9,6 +9,7 @@ import {
   MUNICIPALITY_CITIES_ARR,
   NEED_FIX_MAP,
   RUN_TITLES,
+  WORKOUT_TIME_TITLES,
   RIDE_COLOR,
   VIRTUAL_RIDE_COLOR,
   HIKE_COLOR,
@@ -234,9 +235,27 @@ const titleForType = (type: string): string => {
       return RUN_TITLES.SNOWBOARD_TITLE;
     case 'Ski':
       return RUN_TITLES.SKI_TITLE;
+    case 'Walk':
+      return RUN_TITLES.WALK_TITLE;
     default:
       return RUN_TITLES.RUN_TITLE;
   }
+}
+
+const titleForTime = (runHour: number) => {
+  if (runHour >= 0 && runHour <= 10) {
+    return WORKOUT_TIME_TITLES.MORNING_TIME_TITLE;
+  }
+  if (runHour > 10 && runHour <= 14) {
+    return WORKOUT_TIME_TITLES.MIDDAY_TIME_TITLE;
+  }
+  if (runHour > 14 && runHour <= 18) {
+    return WORKOUT_TIME_TITLES.AFTERNOON_TIME_TITLE;
+  }
+  if (runHour > 18 && runHour <= 21) {
+    return WORKOUT_TIME_TITLES.EVENING_TIME_TITLE;
+  }
+  return WORKOUT_TIME_TITLES.NIGHT_TIME_TITLE;
 }
 
 const typeForRun = (run: Activity): string => {
@@ -288,6 +307,7 @@ const typeForRun = (run: Activity): string => {
 
 const titleForRun = (run: Activity): string => {
   const type = run.type;
+  const runHour = +run.start_date_local.slice(11, 13);
   if (type == 'Run' || type == 'Trail Run'){
       const runDistance = run.distance / 1000;
       if (runDistance >= 40) {
@@ -297,7 +317,7 @@ const titleForRun = (run: Activity): string => {
         return RUN_TITLES.HALF_MARATHON_RUN_TITLE;
       }
   }
-  return titleForType(type);
+  return titleForTime(runHour) + titleForType(type);
 };
 
 const colorFromType = (workoutType: string): string => {
