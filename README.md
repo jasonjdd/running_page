@@ -759,6 +759,8 @@ ps: **when initializing for the first time, if you have a large amount of strava
 
 <details>
 <summary>Get your Coros data</summary>
+<br>
+如果是国外账户，需要修改'run_page\coros_sync.py'里面的网址，'teamcnapi' to 'teamapi'
 
 #### Enter the following command in the terminal
 
