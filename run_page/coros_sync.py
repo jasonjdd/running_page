@@ -11,9 +11,9 @@ from config import JSON_FILE, SQL_FILE, FIT_FOLDER
 from utils import make_activities_file
 
 COROS_URL_DICT = {
-    "LOGIN_URL": "https://teamcnapi.coros.com/account/login",
-    "DOWNLOAD_URL": "https://teamcnapi.coros.com/activity/detail/download",
-    "ACTIVITY_LIST": "https://teamcnapi.coros.com/activity/query?&modeList=100,102,103",
+    "LOGIN_URL": "https://teamapi.coros.com/account/login",
+    "DOWNLOAD_URL": "https://teamapi.coros.com/activity/detail/download",
+    "ACTIVITY_LIST": "https://teamapi.coros.com/activity/query?&modeList=100,102,103",
 }
 
 TIME_OUT = httpx.Timeout(240.0, connect=360.0)
