@@ -130,9 +130,18 @@ class TrackLoader:
     def _merge_tracks(tracks):
         log.info("Merging tracks...")
         tracks = sorted(tracks, key=lambda t1: t1.start_time_local)
+        # 用于记录已经出现过的start_date_local值
+        seen_dates = set()
+        # 用于存储不重复的活动记录
+        unique_activities = []
+        # 遍历活动记录，检查是否有重复的start_date_local
+        for t in tracks:
+            if t.start_time_local not in seen_dates:
+                seen_dates.add(t.start_time_local)
+                unique_activities.append(t)
         merged_tracks = []
         last_end_time = None
-        for t in tracks:
+        for t in unique_activities:
             if last_end_time is None:
                 merged_tracks.append(t)
             else:

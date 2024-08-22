@@ -25,7 +25,6 @@ class Generator:
         self.client_id = ""
         self.client_secret = ""
         self.refresh_token = ""
-        self.only_run = False
 
     def set_strava_config(self, client_id, client_secret, refresh_token):
         self.client_id = client_id
@@ -61,8 +60,6 @@ class Generator:
                 filters = {"before": datetime.datetime.utcnow()}
 
         for activity in self.client.get_activities(**filters):
-            if self.only_run and activity.type != "Run":
-                continue
             if IGNORE_BEFORE_SAVING:
                 activity.summary_polyline = filter_out(activity.summary_polyline)
             created = update_or_create_activity(self.session, activity)
@@ -127,8 +124,6 @@ class Generator:
         streak = 0
         last_date = None
         for activity in activities:
-            if self.only_run and activity.type != "Run":
-                continue
             # Determine running streak.
             date = datetime.datetime.strptime(
                 activity.start_date_local, "%Y-%m-%d %H:%M:%S"
