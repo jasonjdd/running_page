@@ -128,7 +128,7 @@ class Generator:
         for activity in activities:
             # 过滤掉相同起始时间的活动
             if activity.start_date_local not in seen_dates:
-                seen_dates.add(activityt.start_date_local)
+                seen_dates.add(activity.start_date_local)
                 # Determine running streak.
                 date = datetime.datetime.strptime(
                     activity.start_date_local, "%Y-%m-%d %H:%M:%S"
