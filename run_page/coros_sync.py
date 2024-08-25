@@ -75,6 +75,7 @@ class Coros:
             if not activities:
                 break
             for activity in activities:
+                print(f'activity mode-name: {activity["mode"]} - {activity["name"]}')
                 label_id = activity["labelId"]
                 if label_id is None:
                     continue

@@ -120,28 +120,33 @@ class Generator:
             .order_by(Activity.start_date_local)
         )
         activity_list = []
+        # 用于记录已经出现过的start_date_local值
+        seen_dates = set()
 
         streak = 0
         last_date = None
         for activity in activities:
-            # Determine running streak.
-            date = datetime.datetime.strptime(
-                activity.start_date_local, "%Y-%m-%d %H:%M:%S"
-            ).date()
-            if last_date is None:
-                streak = 1
-            elif date == last_date:
-                pass
-            elif date == last_date + datetime.timedelta(days=1):
-                streak += 1
-            else:
-                assert date > last_date
-                streak = 1
-            activity.streak = streak
-            last_date = date
-            if not IGNORE_BEFORE_SAVING:
-                activity.summary_polyline = filter_out(activity.summary_polyline)
-            activity_list.append(activity.to_dict())
+            # 过滤掉相同起始时间的活动
+            if activity.start_date_local not in seen_dates:
+                seen_dates.add(activityt.start_date_local)
+                # Determine running streak.
+                date = datetime.datetime.strptime(
+                    activity.start_date_local, "%Y-%m-%d %H:%M:%S"
+                ).date()
+                if last_date is None:
+                    streak = 1
+                elif date == last_date:
+                    pass
+                elif date == last_date + datetime.timedelta(days=1):
+                    streak += 1
+                else:
+                    assert date > last_date
+                    streak = 1
+                activity.streak = streak
+                last_date = date
+                if not IGNORE_BEFORE_SAVING:
+                    activity.summary_polyline = filter_out(activity.summary_polyline)
+                activity_list.append(activity.to_dict())
 
         return activity_list
 

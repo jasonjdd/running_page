@@ -18,6 +18,7 @@ from garmin_fit_sdk.util import FIT_EPOCH_S
 from polyline_processor import filter_out
 from rich import print
 from tcxreader.tcxreader import TCXReader
+from config import TYPE_DICT
 
 from .exceptions import TrackLoadError
 from .utils import parse_datetime_to_local
@@ -285,7 +286,11 @@ class Track:
         if "file_id_mesgs" in fit:
             device_message = fit["file_id_mesgs"][0]
             if "manufacturer" in device_message:
-                self.device = device_message["manufacturer"]
+                # for coros device. get device name: 'product_name': 'COROS PACE 3'
+                if "product_name" in device_message:
+                    self.device = device_message["product_name"]
+                else:
+                    self.device = device_message["manufacturer"]
             if "garmin_product" in device_message:
                 self.device += " " + device_message["garmin_product"]
 
@@ -336,7 +341,7 @@ class Track:
                 if self.device
                 else f"run from {run_from}"
             ),  # maybe change later
-            "type": "Run",  # Run for now only support run for now maybe change later
+            "type": TYPE_DICT[self.type.lower()],#"Run",  # Run for now only support run for now maybe change later
             "start_date": self.start_time.strftime("%Y-%m-%d %H:%M:%S"),
             "end": self.end_time.strftime("%Y-%m-%d %H:%M:%S"),
             "start_date_local": self.start_time_local.strftime("%Y-%m-%d %H:%M:%S"),
