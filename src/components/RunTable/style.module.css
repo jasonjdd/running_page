@@ -32,6 +32,7 @@
 
     &:first-child {
       text-align: left;
+      min-width: 100px;
     }
   }
 
@@ -41,7 +42,7 @@
 }
 
 .selected {
-  color: red;
+  color: red !important;
 }
 
 .tableContainer {
