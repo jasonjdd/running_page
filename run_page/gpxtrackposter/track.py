@@ -337,7 +337,7 @@ class Track:
         d = {
             "id": self.run_id,
             "name": (
-                f"{self.type} from {run_from} by {self.device}"
+                f"{self.type} by {self.device}"
                 if self.device
                 else f"{self.type} from {run_from}"
             ),  # maybe change later
