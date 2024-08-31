@@ -341,7 +341,9 @@ class Track:
                 if self.device
                 else f"{self.type} from {run_from}"
             ),  # maybe change later
-            "type": TYPE_DICT[self.type.lower()],#"Run",  # Run for now only support run for now maybe change later
+            "type": TYPE_DICT[
+                self.type.lower()
+            ],  # "Run",  # Run for now only support run for now maybe change later
             "start_date": self.start_time.strftime("%Y-%m-%d %H:%M:%S"),
             "end": self.end_time.strftime("%Y-%m-%d %H:%M:%S"),
             "start_date_local": self.start_time_local.strftime("%Y-%m-%d %H:%M:%S"),

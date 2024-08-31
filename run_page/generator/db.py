@@ -75,7 +75,9 @@ def update_or_create_activity(session, run_activity):
     try:
         activity = (
             # session.query(Activity).filter_by(run_id=int(run_activity.id)).first()
-            session.query(Activity).filter_by(start_date_local=run_activity.start_date_local).first()
+            session.query(Activity)
+            .filter_by(start_date_local=run_activity.start_date_local)
+            .first()
         )
         if not activity:
             start_point = run_activity.start_latlng
