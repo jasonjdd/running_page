@@ -7393,10 +7393,10 @@
 },
 {
 "run_id": 1717888422000,
-"name": "run from fit by coros",
+"name": "Riding by coros",
 "distance": 20021.47,
 "moving_time": "1:55:17.350000",
-"type": "Run",
+"type": "Ride",
 "start_date": "2024-06-08 23:13:42",
 "start_date_local": "2024-06-09 07:13:42",
 "location_country": "\u56de\u9f99\u89c2\u4e1c\u5927\u8857, \u9f99\u6cfd\u56ed\u8857\u9053, \u660c\u5e73\u533a, \u5317\u4eac\u5e02, 100096, \u4e2d\u56fd",
