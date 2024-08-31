@@ -8261,7 +8261,7 @@
 },
 {
 "run_id": 1724541612000,
-"name": "run from fit by COROS PACE 3",
+"name": "Running by COROS PACE 3",
 "distance": 5260.17,
 "moving_time": "0:32:50.880000",
 "type": "Run",
@@ -8275,7 +8275,7 @@
 },
 {
 "run_id": 1724560895000,
-"name": "run from fit by COROS PACE 3",
+"name": "Riding by COROS PACE 3",
 "distance": 5585.65,
 "moving_time": "0:47:17.620000",
 "type": "Ride",
@@ -8289,7 +8289,7 @@
 },
 {
 "run_id": 1724672431000,
-"name": "run from fit by COROS PACE 3",
+"name": "Running by COROS PACE 3",
 "distance": 15314.73,
 "moving_time": "1:39:41.230000",
 "type": "Run",
@@ -8303,7 +8303,7 @@
 },
 {
 "run_id": 1724752545000,
-"name": "run from fit by COROS PACE 3",
+"name": "Riding by COROS PACE 3",
 "distance": 2870.71,
 "moving_time": "0:16:50.050000",
 "type": "Ride",
@@ -8317,7 +8317,7 @@
 },
 {
 "run_id": 1724796642000,
-"name": "run from fit by COROS PACE 3",
+"name": "Running by COROS PACE 3",
 "distance": 3472.02,
 "moving_time": "0:22:10.320000",
 "type": "Run",
@@ -8331,7 +8331,7 @@
 },
 {
 "run_id": 1724834794000,
-"name": "run from fit by COROS PACE 3",
+"name": "Riding by COROS PACE 3",
 "distance": 12158.45,
 "moving_time": "0:55:48.270000",
 "type": "Ride",
@@ -8345,7 +8345,7 @@
 },
 {
 "run_id": 1724881646000,
-"name": "run from fit by COROS PACE 3",
+"name": "Running by COROS PACE 3",
 "distance": 7156.04,
 "moving_time": "0:45:00.180000",
 "type": "Run",
@@ -8359,7 +8359,7 @@
 },
 {
 "run_id": 1724925803000,
-"name": "run from fit by COROS PACE 3",
+"name": "Riding by COROS PACE 3",
 "distance": 3185.78,
 "moving_time": "0:17:53.120000",
 "type": "Ride",
@@ -8373,7 +8373,7 @@
 },
 {
 "run_id": 1724988802000,
-"name": "run from fit by COROS PACE 3",
+"name": "Walking by COROS PACE 3",
 "distance": 5047.85,
 "moving_time": "1:26:20.920000",
 "type": "Walk",
