@@ -11,17 +11,17 @@ interface ISiteMetadataResult {
 
 const data: ISiteMetadataResult = {
   siteTitle: 'Jason.Jia Running Page',
-  siteUrl: 'https://github.com',
+  siteUrl: 'https://jasonjdd.github.io/running_page',
   logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTtc69JxHNcmN1ETpMUX4dozAgAN6iPjWalQ&usqp=CAU',
   description: 'Personal site and blog',
   navLinks: [
     {
       name: 'Blog',
-      url: 'https://github.com/jasonjdd/gitblog',
+      url: 'https://jasonjdd.github.io/running_page',
     },
     {
       name: 'About',
-      url: 'https://github.com/jasonjdd/running_page/blob/master/README-CN.md',
+      url: 'https://jasonjdd.github.io/running_page',
     },
   ],
 };

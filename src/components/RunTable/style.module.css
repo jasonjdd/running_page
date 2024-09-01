@@ -25,6 +25,7 @@
 
 .runRow {
   cursor: pointer;
+
   :is(td) {
     padding: 0.5rem;
     border: 0;
@@ -32,7 +33,7 @@
 
     &:first-child {
       text-align: left;
-      min-width: 100px;
+      min-width: 50px;
     }
   }
 
