@@ -10036,5 +10036,19 @@
 "average_heartrate": 135.0,
 "average_speed": 2.57,
 "streak": 1
+},
+{
+"run_id": 1741403380000,
+"name": "running by COROS PACE 3",
+"distance": 7876.76,
+"moving_time": "0:56:36.210000",
+"type": "Run",
+"start_date": "2025-03-08 03:09:40",
+"start_date_local": "2025-03-08 11:09:40",
+"location_country": "",
+"summary_polyline": null,
+"average_heartrate": 116.0,
+"average_speed": 2.319,
+"streak": 1
 }
 ]
