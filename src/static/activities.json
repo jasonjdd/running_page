@@ -10050,5 +10050,33 @@
 "average_heartrate": 116.0,
 "average_speed": 2.319,
 "streak": 1
+},
+{
+"run_id": 1741495478000,
+"name": "running by COROS PACE 3",
+"distance": 6472.89,
+"moving_time": "0:43:27.640000",
+"type": "Run",
+"start_date": "2025-03-09 04:44:38",
+"start_date_local": "2025-03-09 12:44:38",
+"location_country": "",
+"summary_polyline": null,
+"average_heartrate": 119.0,
+"average_speed": 2.482,
+"streak": 2
+},
+{
+"run_id": 1741498667000,
+"name": "swimming by COROS PACE 3",
+"distance": 1000.0,
+"moving_time": "0:51:34.230000",
+"type": "Swim",
+"start_date": "2025-03-09 05:37:47",
+"start_date_local": "2025-03-09 13:37:47",
+"location_country": "",
+"summary_polyline": null,
+"average_heartrate": 103.0,
+"average_speed": 0.444,
+"streak": 2
 }
 ]
