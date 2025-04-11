@@ -10456,5 +10456,19 @@
 "average_heartrate": 133.0,
 "average_speed": 2.654,
 "streak": 1
+},
+{
+"run_id": 1744342323000,
+"name": "swimming by COROS PACE 3",
+"distance": 575.0,
+"moving_time": "0:27:33.180000",
+"type": "Swim",
+"start_date": "2025-04-11 03:32:03",
+"start_date_local": "2025-04-11 11:32:03",
+"location_country": "",
+"summary_polyline": null,
+"average_heartrate": 103.0,
+"average_speed": 0.578,
+"streak": 2
 }
 ]
