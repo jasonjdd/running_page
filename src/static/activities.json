@@ -10696,6 +10696,20 @@
 "streak": 7
 },
 {
+"run_id": 1745835795000,
+"name": "swimming by COROS PACE 3",
+"distance": 1025.0,
+"moving_time": "0:38:50.770000",
+"type": "Swim",
+"start_date": "2025-04-28 10:23:15",
+"start_date_local": "2025-04-28 18:23:15",
+"location_country": "",
+"summary_polyline": null,
+"average_heartrate": 109.0,
+"average_speed": 0.538,
+"streak": 7
+},
+{
 "run_id": 1745879072000,
 "name": "running by COROS PACE 3",
 "distance": 8879.28,
