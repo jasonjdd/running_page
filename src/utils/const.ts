@@ -3,6 +3,9 @@ const MAPBOX_TOKEN =
   // For security reasons, please avoid using the default public token provided by Mapbox as much as possible.
   // Instead, manually add a new token and apply URL restrictions.
   // (please refer to https://github.com/yihong0618/running_page/issues/643#issuecomment-2042668580)
+  // pk.eyJ1IjoiYXlhenVycmVobWFuNzg2IiwiYSI6ImNsdTZvbnphcjFzMGUyam54aWYxMzFraG8ifQ.yjQ5BZj58dJBP0Mts0r7Ww
+  // pk.eyJ1IjoiYmVuLTI5IiwiYSI6ImNrZ3Q4Ym9mMDBqMGYyeXFvODV2dWl6YzQifQ.gSKoWF-fMjhzU67TuDezJQ
+  // 
   'pk.eyJ1IjoieWlob25nMDYxOCIsImEiOiJjbWYxdXR4YncwMTJtMm5zOTE4eTZpMGdtIn0.OnsXdwkZFztR8a5Ph_T-xg';
 const MUNICIPALITY_CITIES_ARR = [
   '北京市',
@@ -53,12 +56,16 @@ const CHINESE_INFO_MESSAGE = (yearLength: number, year: string): string => {
 const ENGLISH_INFO_MESSAGE = (yearLength: number, year: string): string =>
   `Running Journey with ${yearLength} Years, the table shows year ${year} data`;
 
+const CHINESE_WEEK_STATISTIC_MESSAGE = (weekRunCount: number, weekRunDistance: number, weekRunAvgHR: number, weekRunAvgPace: string): string => '本周共计跑步${weekRunCount}次，距离${weekRunDistance}公里，平均心率${weekRunAvgHR}BPM，平均配速${weekRunAvgPace}';
+const EGNLISH_WEEK_STATISTIC_MESSAGE = (weekRunCount: number, weekRunDistance: number, weekRunAvgHR: number, weekRunAvgPace: string): string => 'Total ${weekRunCount} runs this week, distance ${weekRunDistance} km, average heart rate ${weekRunAvgHR} BPM, average pace ${weekRunAvgPace}';
+
 // not support English for now
 const CHINESE_LOCATION_INFO_MESSAGE_FIRST =
   '我跑过了一些地方，希望随着时间推移，地图点亮的地方越来越多';
 const CHINESE_LOCATION_INFO_MESSAGE_SECOND = '不要停下来，不要停下奔跑的脚步';
 
 const INFO_MESSAGE = IS_CHINESE ? CHINESE_INFO_MESSAGE : ENGLISH_INFO_MESSAGE;
+const WEEK_STATISTIC_MESSAGE = IS_CHINESE ? CHINESE_WEEK_STATISTIC_MESSAGE : EGNLISH_WEEK_STATISTIC_MESSAGE;
 const FULL_MARATHON_RUN_TITLE = IS_CHINESE ? '全程马拉松' : 'Full Marathon';
 const HALF_MARATHON_RUN_TITLE = IS_CHINESE ? '半程马拉松' : 'Half Marathon';
 const RUN_TITLE = IS_CHINESE ? '跑步' : 'Run';
@@ -123,6 +130,7 @@ export {
   IS_CHINESE,
   ROAD_LABEL_DISPLAY,
   INFO_MESSAGE,
+  WEEK_STATISTIC_MESSAGE,
   RUN_TITLES,
   WORKOUT_TIME_TITLES,
   USE_ANIMATION_FOR_GRID,
