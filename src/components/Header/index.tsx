@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import useSiteMetadata from '@/hooks/useSiteMetadata';
-import { WEEK_STATISTIC_MESSAGE } from '@/utils/const';
+import useActivities from '@/hooks/useActivities';
+import { WEEK_STATISTIC_MESSAGE, MONTH_STATISTIC_MESSAGE } from '@/utils/const';
 
 const Header = () => {
   const { logo, siteUrl, navLinks } = useSiteMetadata();
-
+  const { weeklyRuns, weeklyDistance, monthlyRuns, monthlyDistance } = useActivities();
   return (
     <>
       <nav className="mt-12 flex w-full items-center justify-between pl-6 lg:px-16">
@@ -15,18 +16,18 @@ const Header = () => {
             </picture>
           </Link>
         </div>
-        <div className="w-1/4 flex flex-col justify-center text-sm">
+        <div className="w-2/4 flex flex-col justify-center text-sm pl-16">
           {/* 第一行: 本周跑步统计数据 */}
-          <div className="font-semibold text-yellow-800">
-            {WEEK_STATISTIC_MESSAGE(3, 46, 133, '6m/km')}
+          <div className="text-white-800">
+            {WEEK_STATISTIC_MESSAGE(weeklyRuns, weeklyDistance, 133, '6m/km')}
           </div>
 
           {/* 第二行: 本月跑步记录统计数据 */}
           <div className="text-white-400">
-            本月跑步: 3 次
+            {MONTH_STATISTIC_MESSAGE(monthlyRuns, monthlyDistance, 132, '6m12s/km')}
           </div>
         </div>
-        <div className="w-2/4 text-right">
+        <div className="w-1/4 text-right">
           {navLinks.map((n, i) => (
             <a
               key={i}

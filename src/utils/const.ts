@@ -56,8 +56,11 @@ const CHINESE_INFO_MESSAGE = (yearLength: number, year: string): string => {
 const ENGLISH_INFO_MESSAGE = (yearLength: number, year: string): string =>
   `Running Journey with ${yearLength} Years, the table shows year ${year} data`;
 
-const CHINESE_WEEK_STATISTIC_MESSAGE = (weekRunCount: number, weekRunDistance: number, weekRunAvgHR: number, weekRunAvgPace: string): string => `本周共计跑步${weekRunCount}次, 距离${weekRunDistance}公里, 平均心率${weekRunAvgHR}BPM,平均配速${weekRunAvgPace}`;
+const CHINESE_WEEK_STATISTIC_MESSAGE = (weekRunCount: number, weekRunDistance: number, weekRunAvgHR: number, weekRunAvgPace: string): string => `本周共计跑步${weekRunCount}次, 距离${weekRunDistance}km, 平均心率${weekRunAvgHR}bpm, 平均配速${weekRunAvgPace}`;
 const EGNLISH_WEEK_STATISTIC_MESSAGE = (weekRunCount: number, weekRunDistance: number, weekRunAvgHR: number, weekRunAvgPace: string): string => `Total ${weekRunCount} runs this week, distance ${weekRunDistance} km, average heart rate ${weekRunAvgHR} BPM, average pace ${weekRunAvgPace}`;
+
+const CHINESE_MONTH_STATISTIC_MESSAGE = (monthRunCount: number, monthRunDistance: number, monthRunAvgHR: number, monthRunAvgPace: string): string => `本月共计跑步${monthRunCount}次, 距离${monthRunDistance}km, 平均心率${monthRunAvgHR}bpm, 平均配速${monthRunAvgPace}`;
+const EGNLISH_MONTH_STATISTIC_MESSAGE = (monthRunCount: number, monthRunDistance: number, monthRunAvgHR: number, monthRunAvgPace: string): string => `Total ${monthRunCount} runs this month, distance ${monthRunDistance} km, average heart rate ${monthRunAvgHR} BPM, average pace ${monthRunAvgPace}`;
 
 // not support English for now
 const CHINESE_LOCATION_INFO_MESSAGE_FIRST =
@@ -66,6 +69,7 @@ const CHINESE_LOCATION_INFO_MESSAGE_SECOND = '不要停下来，不要停下奔�
 
 const INFO_MESSAGE = IS_CHINESE ? CHINESE_INFO_MESSAGE : ENGLISH_INFO_MESSAGE;
 const WEEK_STATISTIC_MESSAGE = IS_CHINESE ? CHINESE_WEEK_STATISTIC_MESSAGE : EGNLISH_WEEK_STATISTIC_MESSAGE;
+const MONTH_STATISTIC_MESSAGE = IS_CHINESE ? CHINESE_MONTH_STATISTIC_MESSAGE : EGNLISH_MONTH_STATISTIC_MESSAGE;
 const FULL_MARATHON_RUN_TITLE = IS_CHINESE ? '全程马拉松' : 'Full Marathon';
 const HALF_MARATHON_RUN_TITLE = IS_CHINESE ? '半程马拉松' : 'Half Marathon';
 const RUN_TITLE = IS_CHINESE ? '跑步' : 'Run';
@@ -131,6 +135,7 @@ export {
   ROAD_LABEL_DISPLAY,
   INFO_MESSAGE,
   WEEK_STATISTIC_MESSAGE,
+  MONTH_STATISTIC_MESSAGE,
   RUN_TITLES,
   WORKOUT_TIME_TITLES,
   USE_ANIMATION_FOR_GRID,
