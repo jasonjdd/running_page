@@ -56,8 +56,8 @@ const CHINESE_INFO_MESSAGE = (yearLength: number, year: string): string => {
 const ENGLISH_INFO_MESSAGE = (yearLength: number, year: string): string =>
   `Running Journey with ${yearLength} Years, the table shows year ${year} data`;
 
-const CHINESE_WEEK_STATISTIC_MESSAGE = (weekRunCount: number, weekRunDistance: number, weekRunAvgHR: number, weekRunAvgPace: string): string => '本周共计跑步${weekRunCount}次，距离${weekRunDistance}公里，平均心率${weekRunAvgHR}BPM，平均配速${weekRunAvgPace}';
-const EGNLISH_WEEK_STATISTIC_MESSAGE = (weekRunCount: number, weekRunDistance: number, weekRunAvgHR: number, weekRunAvgPace: string): string => 'Total ${weekRunCount} runs this week, distance ${weekRunDistance} km, average heart rate ${weekRunAvgHR} BPM, average pace ${weekRunAvgPace}';
+const CHINESE_WEEK_STATISTIC_MESSAGE = (weekRunCount: number, weekRunDistance: number, weekRunAvgHR: number, weekRunAvgPace: string): string => `本周共计跑步${weekRunCount}次, 距离${weekRunDistance}公里, 平均心率${weekRunAvgHR}BPM,平均配速${weekRunAvgPace}`;
+const EGNLISH_WEEK_STATISTIC_MESSAGE = (weekRunCount: number, weekRunDistance: number, weekRunAvgHR: number, weekRunAvgPace: string): string => `Total ${weekRunCount} runs this week, distance ${weekRunDistance} km, average heart rate ${weekRunAvgHR} BPM, average pace ${weekRunAvgPace}`;
 
 // not support English for now
 const CHINESE_LOCATION_INFO_MESSAGE_FIRST =

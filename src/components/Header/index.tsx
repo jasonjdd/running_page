@@ -15,14 +15,14 @@ const Header = () => {
             </picture>
           </Link>
         </div>
-        <div className="w-1/4">
+        <div className="w-1/4 flex flex-col justify-center text-sm">
           {/* 第一行: 本周跑步统计数据 */}
-          <div className="font-semibold text-gray-800">
+          <div className="font-semibold text-yellow-800">
             {WEEK_STATISTIC_MESSAGE(3, 46, 133, '6m/km')}
           </div>
 
           {/* 第二行: 本月跑步记录统计数据 */}
-          <div className="text-gray-500">
+          <div className="text-white-400">
             本月跑步: 3 次
           </div>
         </div>
