@@ -1,3 +1,7 @@
+## 记录
+1. fit文件解析在run_page/gpxtrackposter/track.py中，里面共有9个字段，记录了全部运动数据。目前只要了session_mesgs字段内容的数据，相当于跑步的概要数据。另外每公里分段记录数据更详细，在字段lap_mesgs中，也是可以拿出来的。
+
+
 ## Note
 
 1. clone or Fork before vercel 404 need to pull the latest code
@@ -42,7 +46,7 @@ English | [简体中文](https://github.com/yihong0618/running_page/blob/master/
 | [zhubao315](https://github.com/zhubao315)         | <https://zhubao315.github.io/running>          | Strava      |
 | [shaonianche](https://github.com/shaonianche)     | <https://run.duanfei.org>                      | Strava      |
 | [yihong0618](https://github.com/yihong0618)       | <https://yihong.run>                           | Nike        |
-| [superleeyom](https://github.com/superleeyom)     | <https://running.leeyom.top>                   | Strava        |
+| [superleeyom](https://github.com/superleeyom)     | <https://running.leeyom.top>                   | Strava      |
 | [geekplux](https://github.com/geekplux)           | <https://activities.geekplux.com>              | Nike        |
 | [guanlan](https://github.com/guanlan)             | <https://grun.vercel.app>                      | Strava      |
 | [tuzimoe](https://github.com/tuzimoe)             | <https://run.tuzi.moe>                         | Nike        |
@@ -96,13 +100,13 @@ English | [简体中文](https://github.com/yihong0618/running_page/blob/master/
 | [PPZ](https://github.com/8824PPZ)                 | <https://run.dudubbbbbbbbb.top/>               | Strava      |
 | [Yer1k](https://github.com/Yer1k)                 | <https://running.yer1k.com/>                   | Strava      |
 | [AlienVision](https://github.com/weaming)         | <https://run.drink.cafe/>                      | Strava      |
-| [闻笑忘](https://wenxiaowan.com)                | <https://wenxiaowan.com>                       | 苹果健身     |
+| [闻笑忘](https://wenxiaowan.com)                  | <https://wenxiaowan.com>                       | 苹果健身    |
 | [Vensent](https://github.com/Vensent)             | <https://vensent.github.io/workouts_page/>     | Garmin      |
-| [Zeonsing](https://github.com/NoonieBao)             | <https://run.jogzeal.com/>     | Coros      |
+| [Zeonsing](https://github.com/NoonieBao)          | <https://run.jogzeal.com/>                     | Coros       |
 | [yaoper](https://github.com/yaoper)               | <https://running.yaoper.cn>                    | codoon      |
 | [laqieer](https://github.com/laqieer)             | <https://laqieer.github.io/running_page/>      | Strava      |
 | [Guoxin](https://github.com/guoxinl)              | <https://running.guoxin.space/>                | Strava      |
-| [laihj](https://github.com/laihj)                       | <https://run.laihjx.com/>                | 苹果健身      |
+| [laihj](https://github.com/laihj)                 | <https://run.laihjx.com/>                      | 苹果健身    |
 </details>
 
 ## How it works
