@@ -18,9 +18,9 @@ const YearsStat = ({ year, onClick }: { year: string, onClick: (_year: string) =
           {INFO_MESSAGE(years.length, year)}
           <br />
           <br />
-          "Ã÷Ã÷ÕâÃ´Í´¿à£¬ÕâÃ´ÄÑ¹ı£¬ÎªÊ²Ã´¾ÍÊÇ²»ÄÜ·ÅÆúÅÜ²½£¿ÒòÎªÈ«ÉíÏ¸°û¶¼ÔÚ´À´ÀÓû¶¯£¬ÏëÒª¸ĞÊÜÇ¿·çÓ­Ãæ´µ·÷µÄ×ÌÎ¶¡£"
+          "æ˜æ˜è¿™ä¹ˆç—›è‹¦ï¼Œè¿™ä¹ˆéš¾è¿‡ï¼Œä¸ºä»€ä¹ˆå°±æ˜¯ä¸èƒ½æ”¾å¼ƒè·‘æ­¥ï¼Ÿå› ä¸ºå…¨èº«ç»†èƒéƒ½åœ¨è ¢è ¢æ¬²åŠ¨ï¼Œæƒ³è¦æ„Ÿå—å¼ºé£è¿é¢å¹æ‹‚çš„æ»‹å‘³ã€‚"
           <br />
-          <p style={quoteStyle}>&ndash;&ndash;¡¶Ç¿·ç´µ·÷¡·</p>
+          <p style={quoteStyle}>&ndash;&ndash;ã€Šå¼ºé£å¹æ‹‚ã€‹</p>
         </p>
       </section>
       <hr color="red" />
@@ -38,8 +38,8 @@ const YearsStat = ({ year, onClick }: { year: string, onClick: (_year: string) =
 };
 
 const quoteStyle = {
-    fontWeight:"bold",
-    textAlign: "right"
+  fontWeight: "bold",
+  textAlign: "right"
 };
 
 export default YearsStat;
