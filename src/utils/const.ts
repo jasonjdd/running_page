@@ -56,11 +56,11 @@ const CHINESE_INFO_MESSAGE = (yearLength: number, year: string): string => {
 const ENGLISH_INFO_MESSAGE = (yearLength: number, year: string): string =>
   `Running Journey with ${yearLength} Years, the table shows year ${year} data`;
 
-const CHINESE_WEEK_STATISTIC_MESSAGE = (weekRunCount: number, weekRunDistance: number, weekRunAvgHR: number, weekRunAvgPace: string): string => `本周共计跑步${weekRunCount}次, 距离${weekRunDistance}km, 平均心率${weekRunAvgHR}bpm, 平均配速${weekRunAvgPace}`;
-const EGNLISH_WEEK_STATISTIC_MESSAGE = (weekRunCount: number, weekRunDistance: number, weekRunAvgHR: number, weekRunAvgPace: string): string => `Total ${weekRunCount} runs this week, distance ${weekRunDistance} km, average heart rate ${weekRunAvgHR} BPM, average pace ${weekRunAvgPace}`;
+const CHINESE_WEEK_STATISTIC_MESSAGE = (weekRunCount: number, weekRunDistance: number, weekRunAvgHR: number, weekRunAvgPace: number): string => `本周共计跑步${weekRunCount}次, 距离${weekRunDistance}km, 平均心率${weekRunAvgHR}bpm, 平均配速${weekRunAvgPace}min/km`;
+const EGNLISH_WEEK_STATISTIC_MESSAGE = (weekRunCount: number, weekRunDistance: number, weekRunAvgHR: number, weekRunAvgPace: number): string => `Total ${weekRunCount} runs this week, distance ${weekRunDistance}km, average heart rate ${weekRunAvgHR}bpm, average pace ${weekRunAvgPace}min/km`;
 
-const CHINESE_MONTH_STATISTIC_MESSAGE = (monthRunCount: number, monthRunDistance: number, monthRunAvgHR: number, monthRunAvgPace: string): string => `本月共计跑步${monthRunCount}次, 距离${monthRunDistance}km, 平均心率${monthRunAvgHR}bpm, 平均配速${monthRunAvgPace}`;
-const EGNLISH_MONTH_STATISTIC_MESSAGE = (monthRunCount: number, monthRunDistance: number, monthRunAvgHR: number, monthRunAvgPace: string): string => `Total ${monthRunCount} runs this month, distance ${monthRunDistance} km, average heart rate ${monthRunAvgHR} BPM, average pace ${monthRunAvgPace}`;
+const CHINESE_MONTH_STATISTIC_MESSAGE = (monthRunCount: number, monthRunDistance: number, monthRunAvgHR: number, monthRunAvgPace: number): string => `本月共计跑步${monthRunCount}次, 距离${monthRunDistance}km, 平均心率${monthRunAvgHR}bpm, 平均配速${monthRunAvgPace}min/km`;
+const EGNLISH_MONTH_STATISTIC_MESSAGE = (monthRunCount: number, monthRunDistance: number, monthRunAvgHR: number, monthRunAvgPace: number): string => `Total ${monthRunCount} runs this month, distance ${monthRunDistance}km, average heart rate ${monthRunAvgHR}bpm, average pace ${monthRunAvgPace}min/km`;
 
 // not support English for now
 const CHINESE_LOCATION_INFO_MESSAGE_FIRST =

@@ -69,6 +69,34 @@ const isSameMonth = (date: Date, referenceDate: Date): boolean => {
   return date.getFullYear() === referenceDate.getFullYear() && date.getMonth() === referenceDate.getMonth();
 };
 
+/**
+ * 将 HH:MM:SS.mmm 格式的时间字符串转换为总秒数 (浮点数)。
+ * 示例: "0:19:32.710000" -> 1172.71
+ * * @param timeString 时间字符串
+ * @returns 总秒数 (number)
+ */
+const convertTimeStringToSeconds = (timeString: string): number => {
+  if (!timeString) {
+    return 0;
+  }
+
+  // 假设格式为 H:MM:SS.mmm
+  const parts = timeString.split(':');
+  if (parts.length !== 3) {
+    // 如果格式不符合 H:MM:SS.mmm，可以根据实际情况进行错误处理或返回 0
+    console.error(`Invalid time string format: ${timeString}`);
+    return 0;
+  }
+
+  // 提取小时 (H), 分钟 (M), 秒 (S.mmm)
+  const hours = parseFloat(parts[0]);
+  const minutes = parseFloat(parts[1]);
+  const seconds = parseFloat(parts[2]); // parseFloat 可以处理小数部分
+
+  // 转换为总秒数
+  return (hours * 3600) + (minutes * 60) + seconds;
+};
+
 const useActivities = () => {
   const latestRunDate = getLatestDate(activities);
   const cities: Record<string, number> = {};
@@ -82,10 +110,17 @@ const useActivities = () => {
   let weeklyDistance = 0;
   let monthlyRuns = 0;
   let monthlyDistance = 0;
+  // 【新增加权平均心率相关变量】
+  let weeklyHeartRateSum = 0; // (AvgHR * TimerTime) 的总和
+  let weeklyTotalTime = 0;    // 本周跑步总用时（秒）
+  let monthlyHeartRateSum = 0; // (AvgHR * TimerTime) 的总和
+  let monthlyTotalTime = 0;    // 本月跑步总用时（秒）
 
   activities.forEach((run) => {
     const location = locationForRun(run);
 
+    const timerTime = convertTimeStringToSeconds(run.moving_time) || 0;
+    const avgHeartRate = run.average_heartrate || 0;
     // 2. 【修改逻辑：基于 latestRunDate 判断最新周/月】
     if (run.start_date_local && latestRunDate) {
       // 解析活动开始日期（只取日期部分进行周/月比较更安全）
@@ -95,12 +130,16 @@ const useActivities = () => {
       if (isSameWeek(runDate, latestRunDate)) {
         weeklyRuns += 1;
         weeklyDistance += run.distance;
+        weeklyHeartRateSum += avgHeartRate * timerTime;
+        weeklyTotalTime += timerTime;
       }
 
       // 判断是否在最新活动所在月
       if (isSameMonth(runDate, latestRunDate)) {
         monthlyRuns += 1;
         monthlyDistance += run.distance;
+        monthlyHeartRateSum += avgHeartRate * timerTime;
+        monthlyTotalTime += timerTime;
       }
     }
     // End of 【修改逻辑】
@@ -123,6 +162,40 @@ const useActivities = () => {
     years.add(year);
   });
 
+
+  // 计算最终的周平均心率
+  const weeklyAvgHeartRate = weeklyTotalTime > 0
+    ? Math.round(weeklyHeartRateSum / weeklyTotalTime)
+    : 0;
+  const monthlyAvgHeartRate = monthlyTotalTime > 0
+    ? Math.round(monthlyHeartRateSum / monthlyTotalTime)
+    : 0;
+  // 2. 计算周平均速度 (米/秒)
+  const weeklyAvgSpeedMetersPerSecond = weeklyTotalTime > 0
+    ? weeklyDistance / weeklyTotalTime
+    : 0;
+
+  // 3. 【新增】：计算周平均配速 (分钟/公里)
+  let weeklyAvgPaceMinutesPerKm = 0;
+  if (weeklyAvgSpeedMetersPerSecond > 0) {
+    // 转换公式：(1000米 / AvgSpeed) / 60秒
+    // 假设 total_distance 单位是米 (m)
+    const secondsPerKm = 1000 / weeklyAvgSpeedMetersPerSecond;
+    weeklyAvgPaceMinutesPerKm = secondsPerKm / 60;
+  }
+  const monthlyAvgSpeedMetersPerSecond = monthlyTotalTime > 0
+    ? monthlyDistance / monthlyTotalTime
+    : 0;
+  let monthlyAvgPaceMinutesPerKm = 0;
+  if (monthlyAvgSpeedMetersPerSecond > 0) {
+    // 转换公式：(1000米 / AvgSpeed) / 60秒
+    // 假设 total_distance 单位是米 (m)
+    const secondsPerKm = 1000 / monthlyAvgSpeedMetersPerSecond;
+    monthlyAvgPaceMinutesPerKm = secondsPerKm / 60;
+  }
+
+
+
   weeklyDistance = (weeklyDistance / 1000).toFixed(2);
   monthlyDistance = (monthlyDistance / 1000).toFixed(2);
 
@@ -139,8 +212,12 @@ const useActivities = () => {
     thisYear,
     weeklyRuns,
     weeklyDistance,
+    weeklyAvgHeartRate,
+    weeklyAvgPaceMinutesPerKm: weeklyAvgPaceMinutesPerKm.toFixed(2),
     monthlyRuns,
     monthlyDistance,
+    monthlyAvgHeartRate,
+    monthlyAvgPaceMinutesPerKm: monthlyAvgPaceMinutesPerKm.toFixed(2),
   };
 };
 
