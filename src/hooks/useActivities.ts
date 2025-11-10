@@ -122,7 +122,7 @@ const useActivities = () => {
     const timerTime = convertTimeStringToSeconds(run.moving_time) || 0;
     const avgHeartRate = run.average_heartrate || 0;
     // 2. 【修改逻辑：基于 latestRunDate 判断最新周/月】
-    if (run.start_date_local && latestRunDate) {
+    if (run.start_date_local && latestRunDate && run.type === 'Run') {
       // 解析活动开始日期（只取日期部分进行周/月比较更安全）
       const runDate = new Date(run.start_date_local.slice(0, 10));
 
