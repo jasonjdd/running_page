@@ -1,4 +1,4 @@
-import { locationForRun, titleForRun } from '@/utils/utils';
+import { formatPace, locationForRun, titleForRun } from '@/utils/utils';
 import activities from '@/static/activities.json';
 
 // 辅助函数：找到 activities 中最新的活动日期
@@ -176,23 +176,23 @@ const useActivities = () => {
     : 0;
 
   // 3. 【新增】：计算周平均配速 (分钟/公里)
-  let weeklyAvgPaceMinutesPerKm = 0;
-  if (weeklyAvgSpeedMetersPerSecond > 0) {
-    // 转换公式：(1000米 / AvgSpeed) / 60秒
-    // 假设 total_distance 单位是米 (m)
-    const secondsPerKm = 1000 / weeklyAvgSpeedMetersPerSecond;
-    weeklyAvgPaceMinutesPerKm = secondsPerKm / 60;
-  }
+  let weeklyAvgPaceMinutesPerKm = weeklyAvgSpeedMetersPerSecond;
+  // if (weeklyAvgSpeedMetersPerSecond > 0) {
+  //   // 转换公式：(1000米 / AvgSpeed) / 60秒
+  //   // 假设 total_distance 单位是米 (m)
+  //   const secondsPerKm = 1000 / weeklyAvgSpeedMetersPerSecond;
+  //   weeklyAvgPaceMinutesPerKm = secondsPerKm / 60;
+  // }
   const monthlyAvgSpeedMetersPerSecond = monthlyTotalTime > 0
     ? monthlyDistance / monthlyTotalTime
     : 0;
-  let monthlyAvgPaceMinutesPerKm = 0;
-  if (monthlyAvgSpeedMetersPerSecond > 0) {
-    // 转换公式：(1000米 / AvgSpeed) / 60秒
-    // 假设 total_distance 单位是米 (m)
-    const secondsPerKm = 1000 / monthlyAvgSpeedMetersPerSecond;
-    monthlyAvgPaceMinutesPerKm = secondsPerKm / 60;
-  }
+  let monthlyAvgPaceMinutesPerKm = monthlyAvgSpeedMetersPerSecond;
+  // if (monthlyAvgSpeedMetersPerSecond > 0) {
+  //   // 转换公式：(1000米 / AvgSpeed) / 60秒
+  //   // 假设 total_distance 单位是米 (m)
+  //   const secondsPerKm = 1000 / monthlyAvgSpeedMetersPerSecond;
+  //   monthlyAvgPaceMinutesPerKm = secondsPerKm / 60;
+  // }
 
 
 
@@ -201,6 +201,9 @@ const useActivities = () => {
 
   let yearsArray = [...years].sort().reverse();
   if (years) [thisYear] = yearsArray; // set current year as first one of years array
+
+  let weeklyAvgPaceMinutesPerKmString = formatPace(weeklyAvgPaceMinutesPerKm);
+  let monthlyAvgPaceMinutesPerKmString = formatPace(monthlyAvgPaceMinutesPerKm);
 
   return {
     activities,
@@ -213,11 +216,11 @@ const useActivities = () => {
     weeklyRuns,
     weeklyDistance,
     weeklyAvgHeartRate,
-    weeklyAvgPaceMinutesPerKm: weeklyAvgPaceMinutesPerKm.toFixed(2),
+    weeklyAvgPaceMinutesPerKmString,
     monthlyRuns,
     monthlyDistance,
     monthlyAvgHeartRate,
-    monthlyAvgPaceMinutesPerKm: monthlyAvgPaceMinutesPerKm.toFixed(2),
+    monthlyAvgPaceMinutesPerKmString,
   };
 };
 

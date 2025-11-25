@@ -5,7 +5,7 @@ import { WEEK_STATISTIC_MESSAGE, MONTH_STATISTIC_MESSAGE } from '@/utils/const';
 
 const Header = () => {
   const { logo, siteUrl, navLinks } = useSiteMetadata();
-  const { weeklyRuns, weeklyDistance, weeklyAvgHeartRate, weeklyAvgPaceMinutesPerKm, monthlyRuns, monthlyDistance, monthlyAvgHeartRate, monthlyAvgPaceMinutesPerKm } = useActivities();
+  const { weeklyRuns, weeklyDistance, weeklyAvgHeartRate, weeklyAvgPaceMinutesPerKmString, monthlyRuns, monthlyDistance, monthlyAvgHeartRate, monthlyAvgPaceMinutesPerKmString } = useActivities();
   return (
     <>
       <nav className="mt-12 flex w-full items-center justify-between pl-6 lg:px-16">
@@ -19,12 +19,12 @@ const Header = () => {
         <div className="w-2/4 flex flex-col justify-center text-sm pl-16">
           {/* 第一行: 本周跑步统计数据 */}
           <div className="text-white-800">
-            {WEEK_STATISTIC_MESSAGE(weeklyRuns, weeklyDistance, weeklyAvgHeartRate, weeklyAvgPaceMinutesPerKm)}
+            {WEEK_STATISTIC_MESSAGE(weeklyRuns, weeklyDistance, weeklyAvgHeartRate, weeklyAvgPaceMinutesPerKmString)}
           </div>
 
           {/* 第二行: 本月跑步记录统计数据 */}
           <div className="text-white-400">
-            {MONTH_STATISTIC_MESSAGE(monthlyRuns, monthlyDistance, monthlyAvgHeartRate, monthlyAvgPaceMinutesPerKm)}
+            {MONTH_STATISTIC_MESSAGE(monthlyRuns, monthlyDistance, monthlyAvgHeartRate, monthlyAvgPaceMinutesPerKmString)}
           </div>
         </div>
         <div className="w-1/4 text-right">
