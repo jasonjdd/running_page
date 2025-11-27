@@ -65,6 +65,30 @@ const RunTable = ({
     setActivity(runs.sort(f));
   };
 
+  // compute a week key (ISO week-year) for each run and assign alternating
+  // boolean per week so adjacent weeks have different background colors
+  const getISOWeekKey = (dateStr: string) => {
+    const d = new Date(dateStr);
+    // Copy date so don't modify original
+    const date = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    // Set to nearest Thursday: current date + 4 - current day number
+    const dayNum = date.getUTCDay() || 7;
+    date.setUTCDate(date.getUTCDate() + 4 - dayNum);
+    const yearStart = new Date(Date.UTC(date.getUTCFullYear(), 0, 1));
+    const weekNo = Math.ceil(((date.getTime() - yearStart.getTime()) / 86400000 + 1) / 7);
+    return `${date.getUTCFullYear()}-W${String(weekNo).padStart(2, '0')}`;
+  };
+
+  const weekMap: Record<string, boolean> = {};
+  let currentAlt = false;
+  for (const run of runs) {
+    const key = getISOWeekKey(run.start_date_local);
+    if (!(key in weekMap)) {
+      weekMap[key] = currentAlt;
+      currentAlt = !currentAlt;
+    }
+  }
+
   return (
     <div className={styles.tableContainer}>
       <table className={styles.runTable} cellSpacing="0" cellPadding="0">
@@ -87,6 +111,7 @@ const RunTable = ({
               run={run}
               runIndex={runIndex}
               setRunIndex={setRunIndex}
+              isAlternateWeek={weekMap[getISOWeekKey(run.start_date_local)]}
             />
           ))}
         </tbody>

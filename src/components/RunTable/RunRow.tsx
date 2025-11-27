@@ -7,9 +7,10 @@ interface IRunRowProperties {
   run: Activity;
   runIndex: number;
   setRunIndex: (_ndex: number) => void;
+  isAlternateWeek?: boolean;
 }
 
-const RunRow = ({ elementIndex, locateActivity, run, runIndex, setRunIndex }: IRunRowProperties) => {
+const RunRow = ({ elementIndex, locateActivity, run, runIndex, setRunIndex, isAlternateWeek }: IRunRowProperties) => {
   const distance = (run.distance / 1000.0).toFixed(2);
   const paceParts = run.average_speed ? formatPace(run.average_speed) : null;
   const heartRate = run.average_heartrate;
@@ -26,7 +27,7 @@ const RunRow = ({ elementIndex, locateActivity, run, runIndex, setRunIndex }: IR
 
   return (
     <tr
-      className={`${styles.runRow} ${runIndex === elementIndex ? styles.selected : ''}`}
+      className={`${styles.runRow} ${runIndex === elementIndex ? styles.selected : ''} ${isAlternateWeek ? styles.altWeek : ''}`}
       key={run.start_date_local}
       onClick={handleClick}
       style={{ color: colorFromType(run.type) }}
