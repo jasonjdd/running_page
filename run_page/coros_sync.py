@@ -45,6 +45,8 @@ class Coros:
             "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
         }
         data = {"account": self.account, "accountType": 2, "pwd": self.password}
+        # Use a temporary client to perform the login request, then keep
+        # a persistent client `self.req` for subsequent requests.
         async with httpx.AsyncClient(timeout=TIME_OUT) as client:
             response = await client.post(url, json=data, headers=headers)
             resp_json = response.json()
@@ -57,8 +59,9 @@ class Coros:
                 "accesstoken": access_token,
                 "cookie": f"CPL-coros-region=2; CPL-coros-token={access_token}",
             }
-            self.req = httpx.AsyncClient(timeout=TIME_OUT, headers=self.headers)
-        await client.aclose()
+
+        # create a persistent client with the auth headers
+        self.req = httpx.AsyncClient(timeout=TIME_OUT, headers=self.headers)
 
     async def init(self):
         await self.login()
@@ -71,13 +74,21 @@ class Coros:
             url = f"{COROS_URL_DICT.get('ACTIVITY_LIST')}&pageNumber={page_number}&size=20"
             response = await self.req.get(url)
             data = response.json()
-            activities = data.get("data", {}).get("dataList", None)
+            activities = data.get("data", {}).get("dataList", []) or []
             if not activities:
                 break
             for activity in activities:
-                print(f'activity mode-name: {activity["mode"]} - {activity["name"]}')
-                label_id = activity["labelId"]
-                if label_id is None:
+                # Defensive access: some activity objects may omit 'name' or 'labelId'
+                mode = activity.get("mode")
+                name = activity.get("name") or activity.get("label") or "<unnamed>"
+                print(f"activity mode-name: {mode} - {name}")
+                label_id = (
+                    activity.get("labelId")
+                    or activity.get("labelIdStr")
+                    or activity.get("id")
+                )
+                if not label_id:
+                    # skip activities that don't have a downloadable id
                     continue
                 all_activities_ids.append(label_id)
 
@@ -125,22 +136,29 @@ async def download_and_generate(account, password):
     folder = FIT_FOLDER
     downloaded_ids = get_downloaded_ids(folder)
     coros = Coros(account, password)
-    await coros.init()
+    try:
+        await coros.init()
 
-    activity_ids = await coros.fetch_activity_ids()
-    print("activity_ids: ", len(activity_ids))
-    print("downloaded_ids: ", len(downloaded_ids))
-    to_generate_coros_ids = list(set(activity_ids) - set(downloaded_ids))
-    print("to_generate_activity_ids: ", len(to_generate_coros_ids))
+        activity_ids = await coros.fetch_activity_ids()
+        print("activity_ids: ", len(activity_ids))
+        print("downloaded_ids: ", len(downloaded_ids))
+        to_generate_coros_ids = list(set(activity_ids) - set(downloaded_ids))
+        print("to_generate_activity_ids: ", len(to_generate_coros_ids))
 
-    start_time = time.time()
-    await gather_with_concurrency(
-        10,
-        [coros.download_activity(label_d) for label_d in to_generate_coros_ids],
-    )
-    print(f"Download finished. Elapsed {time.time()-start_time} seconds")
-    await coros.req.aclose()
-    make_activities_file(SQL_FILE, FIT_FOLDER, JSON_FILE, "fit")
+        start_time = time.time()
+        await gather_with_concurrency(
+            10,
+            [coros.download_activity(label_d) for label_d in to_generate_coros_ids],
+        )
+        print(f"Download finished. Elapsed {time.time()-start_time} seconds")
+
+        make_activities_file(SQL_FILE, FIT_FOLDER, JSON_FILE, "fit")
+    finally:
+        try:
+            if coros and getattr(coros, "req", None):
+                await coros.req.aclose()
+        except Exception:
+            pass
 
 
 async def gather_with_concurrency(n, tasks):
