@@ -98,7 +98,15 @@ const convertTimeStringToSeconds = (timeString: string): number => {
 };
 
 const useActivities = () => {
-  const latestRunDate = getLatestDate(activities);
+  // 决定“本周/本月”的参考时间点
+  // 说明：
+  // - 使用最近一次跑步时间作为参考（原实现）：当你想把统计窗口对齐到“最后一次活动所在的周/月”时有用。
+  // - 使用当前日期（默认改为此项 true）：表示按日历的“本周/本月”来统计，
+  //   如果本周没有跑步，统计会显示 0，而不是把上一条跑步的周当作“本周”。
+  const USE_CALENDAR_WEEK_AS_REFERENCE = true;
+  const latestRunDate = USE_CALENDAR_WEEK_AS_REFERENCE
+    ? new Date()
+    : getLatestDate(activities);
   const cities: Record<string, number> = {};
   const runPeriod: Record<string, number> = {};
   const provinces: Set<string> = new Set();
