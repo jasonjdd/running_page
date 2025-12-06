@@ -260,9 +260,7 @@ class Track:
             seconds=message["total_elapsed_time"]
         )
         self.moving_dict["average_speed"] = (
-            message["enhanced_avg_speed"]
-            if message["enhanced_avg_speed"]
-            else message["avg_speed"]
+            message.get("enhanced_avg_speed") or message.get("avg_speed") or 0
         )
         for record in fit["record_mesgs"]:
             if "position_lat" in record and "position_long" in record:

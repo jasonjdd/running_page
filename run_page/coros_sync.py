@@ -81,7 +81,7 @@ class Coros:
                 # Defensive access: some activity objects may omit 'name' or 'labelId'
                 mode = activity.get("mode")
                 name = activity.get("name") or activity.get("label") or "<unnamed>"
-                print(f"activity mode-name: {mode} - {name}")
+                # print(f"activity mode-name: {mode} - {name}")
                 label_id = (
                     activity.get("labelId")
                     or activity.get("labelIdStr")
