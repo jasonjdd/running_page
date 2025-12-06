@@ -251,13 +251,11 @@ class Track:
         self.moving_dict["distance"] = message["total_distance"]
         self.moving_dict["moving_time"] = datetime.timedelta(
             seconds=(
-                message["total_moving_time"]
-                if "total_moving_time" in message
-                else message["total_timer_time"]
+                message.get("total_moving_time") or message.get("total_timer_time") or 0
             )
         )
         self.moving_dict["elapsed_time"] = datetime.timedelta(
-            seconds=message["total_elapsed_time"]
+            seconds=message.get("total_elapsed_time") or 0
         )
         self.moving_dict["average_speed"] = (
             message.get("enhanced_avg_speed") or message.get("avg_speed") or 0
