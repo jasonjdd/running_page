@@ -166,6 +166,7 @@ const red2 = 'rgb(238,83,81)';
 export const NEED_FIX_MAP = false;
 export const MAIN_COLOR = green;
 export const RUN_COLOR = yellow;
+export const TRAIL_RUN_COLOR = pink;
 export const RIDE_COLOR = green2;
 export const VIRTUAL_RIDE_COLOR = veryPeri;
 export const HIKE_COLOR = pink;
@@ -178,4 +179,4 @@ export const PROVINCE_FILL_COLOR = '#47b8e0';
 export const COUNTRY_FILL_COLOR = dark_vanilla;
 export const KAYAKING_COLOR = red;
 export const SNOWBOARD_COLOR = dark_vanilla;
-export const TRAIL_RUN_COLOR = IKB;
+

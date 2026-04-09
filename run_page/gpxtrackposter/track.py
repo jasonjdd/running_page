@@ -246,6 +246,8 @@ class Track:
             message["avg_heart_rate"] if "avg_heart_rate" in message else None
         )
         self.type = message["sport"].lower()
+        if "sub_sport" in message:
+            self.type = message["sub_sport"].lower() + "_" + message["sport"].lower()
 
         # moving_dict
         self.moving_dict["distance"] = message["total_distance"]
