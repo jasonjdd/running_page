@@ -241,7 +241,7 @@ class Track:
         self.end_time = datetime.datetime.utcfromtimestamp(
             (message["start_time"] + FIT_EPOCH_S + message["total_elapsed_time"])
         )
-        self.length = message["total_distance"]
+        self.length = message.get("total_distance") or 0
         self.average_heartrate = (
             message["avg_heart_rate"] if "avg_heart_rate" in message else None
         )
@@ -250,7 +250,7 @@ class Track:
             self.type = message["sub_sport"].lower() + "_" + message["sport"].lower()
 
         # moving_dict
-        self.moving_dict["distance"] = message["total_distance"]
+        self.moving_dict["distance"] = message.get("total_distance") or 0
         self.moving_dict["moving_time"] = datetime.timedelta(
             seconds=(
                 message.get("total_moving_time") or message.get("total_timer_time") or 0

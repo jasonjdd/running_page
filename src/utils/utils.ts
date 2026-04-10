@@ -182,7 +182,7 @@ const geoJsonForRuns = (runs: Activity[]): FeatureCollection<LineString> => ({
   type: 'FeatureCollection',
   features: runs.map((run) => {
     const points = pathForRun(run);
-
+    // console.log(`workoutType = ${run.type}, time = ${run.start_date_local} `);
     return {
       type: 'Feature',
       properties: {
@@ -270,13 +270,14 @@ const typeForRun = (run: Activity): string => {
         return 'Half Marathon';
       }
       return 'Run';
+    case 'Trail':
     case 'Trail Run':
-      if (distance >= 40) {
-        return 'Full Marathon';
-      }
-      else if (distance > 20) {
-        return 'Half Marathon';
-      }
+      // if (distance >= 40) {
+      //   return 'Full Marathon';
+      // }
+      // else if (distance > 20) {
+      //   return 'Half Marathon';
+      // }
       return 'Trail Run';
     case 'Ride':
       return 'Ride';
@@ -321,6 +322,7 @@ const titleForRun = (run: Activity): string => {
 };
 
 const colorFromType = (workoutType: string): string => {
+  // console.log(`workoutType = ${workoutType} `);
   switch (workoutType) {
     case 'Run':
       return RUN_COLOR;
