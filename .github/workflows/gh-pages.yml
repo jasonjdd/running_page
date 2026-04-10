@@ -98,6 +98,8 @@ jobs:
         run: pnpm install
       - name: Build
         run: PATH_PREFIX=/${{ github.event.repository.name }} pnpm build
+        env:
+          VITE_MAPBOX_TOKEN: ${{ vars.VITE_MAPBOX_TOKEN }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
