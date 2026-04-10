@@ -1,13 +1,15 @@
 // const
-const MAPBOX_TOKEN =
-  // For security reasons, please avoid using the default public token provided by Mapbox as much as possible.
-  // Instead, manually add a new token and apply URL restrictions.
-  // (please refer to https://github.com/yihong0618/running_page/issues/643#issuecomment-2042668580)
-  // pk.eyJ1IjoiYXlhenVycmVobWFuNzg2IiwiYSI6ImNsdTZvbnphcjFzMGUyam54aWYxMzFraG8ifQ.yjQ5BZj58dJBP0Mts0r7Ww
-  // pk.eyJ1IjoiYmVuLTI5IiwiYSI6ImNrZ3Q4Ym9mMDBqMGYyeXFvODV2dWl6YzQifQ.gSKoWF-fMjhzU67TuDezJQ
-  // 
-  // 'pk.eyJ1IjoieWlob25nMDYxOCIsImEiOiJjbWYxdXR4YncwMTJtMm5zOTE4eTZpMGdtIn0.OnsXdwkZFztR8a5Ph_T-xg';
-  'pk.eyJ1IjoiYmVuLTI5IiwiYSI6ImNrZ3Q4Ym9mMDBqMGYyeXFvODV2dWl6YzQifQ.gSKoWF-fMjhzU67TuDezJQ';
+// const MAPBOX_TOKEN =
+// For security reasons, please avoid using the default public token provided by Mapbox as much as possible.
+// Instead, manually add a new token and apply URL restrictions.
+// (please refer to https://github.com/yihong0618/running_page/issues/643#issuecomment-2042668580)
+// pk.eyJ1IjoiYXlhenVycmVobWFuNzg2IiwiYSI6ImNsdTZvbnphcjFzMGUyam54aWYxMzFraG8ifQ.yjQ5BZj58dJBP0Mts0r7Ww
+// pk.eyJ1IjoiYmVuLTI5IiwiYSI6ImNrZ3Q4Ym9mMDBqMGYyeXFvODV2dWl6YzQifQ.gSKoWF-fMjhzU67TuDezJQ
+// 
+// 'pk.eyJ1IjoieWlob25nMDYxOCIsImEiOiJjbWYxdXR4YncwMTJtMm5zOTE4eTZpMGdtIn0.OnsXdwkZFztR8a5Ph_T-xg';
+// 'pk.eyJ1IjoiYmVuLTI5IiwiYSI6ImNrZ3Q4Ym9mMDBqMGYyeXFvODV2dWl6YzQifQ.gSKoWF-fMjhzU67TuDezJQ';
+const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN ||
+  'pk.eyJ1IjoiYmVuLTI5IiwiYSI6ImNrZ3Q4Ym9mMDBqMGYyeXFvODV2dWl6YzQifQ.gSKoWF-fMjhzU67TuDezJQ';  // 临时 fallback，后面可以删掉
 const MUNICIPALITY_CITIES_ARR = [
   '北京市',
   '上海市',

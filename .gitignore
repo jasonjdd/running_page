@@ -1,4 +1,5 @@
 # Project dependencies
+.env
 .yarn
 .cache
 *.pyc
