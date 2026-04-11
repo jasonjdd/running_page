@@ -87,7 +87,8 @@ class TrackLoader:
         # merge tracks that took place within one hour
         tracks = self._merge_tracks(tracks)
         # filter out tracks with length < min_length
-        return [t for t in tracks if t.length >= self.min_length]
+        # return [t for t in tracks if t.length >= self.min_length]
+        return tracks
 
     def load_tracks_from_db(self, sql_file, is_grid=False):
         session = init_db(sql_file)
@@ -115,9 +116,11 @@ class TrackLoader:
         filtered_tracks = []
         for t in tracks:
             file_name = t.file_names[0]
-            if int(t.length) == 0:
-                log.info(f"{file_name}: skipping empty track")
-            elif not t.start_time_local:
+            # if int(t.length) == 0:
+            #     log.info(f"{file_name}: skipping empty track")
+            # elif not t.start_time_local:
+            # 力量训练没有距离
+            if not t.start_time_local:
                 log.info(f"{file_name}: skipping track without start time")
             elif not self.year_range.contains(t.start_time_local):
                 log.info(

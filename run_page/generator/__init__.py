@@ -116,7 +116,7 @@ class Generator:
     def load(self):
         activities = (
             self.session.query(Activity)
-            .filter(Activity.distance > 0.1)
+            # .filter(Activity.distance > 0.1)
             .order_by(Activity.start_date_local)
         )
         activity_list = []

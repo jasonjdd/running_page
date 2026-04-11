@@ -90,6 +90,7 @@ const SKI_TITLE = IS_CHINESE ? '双板滑雪' : 'Ski';
 const ROAD_TRIP_TITLE = IS_CHINESE ? '自驾' : 'RoadTrip';
 const FLIGHT_TITLE = IS_CHINESE ? '飞行' : 'Flight';
 const WALK_TITLE = IS_CHINESE ? "散步" : "CityWalk";
+const TRAIN_TITLE = IS_CHINESE ? "力量训练" : "Train";
 
 // run time
 const MORNING_TIME_TITLE = IS_CHINESE ? '清晨' : 'Morning ';
@@ -124,6 +125,7 @@ const RUN_TITLES = {
   FLIGHT_TITLE,
   SNOWBOARD_TITLE,
   SKI_TITLE,
+  TRAIN_TITLE,
 };
 
 export {
