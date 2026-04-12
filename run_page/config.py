@@ -58,6 +58,7 @@ TYPE_DICT = {
     "track_running": "Run",
     "trail_running": "Trail Run",
     "strength_training_training": "Train",
+    "strength_training": "Train",
     "generic": "Train",
     "floor_climbing": "Train",
     "jump_rope": "Train",

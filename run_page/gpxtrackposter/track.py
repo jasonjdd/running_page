@@ -247,7 +247,12 @@ class Track:
         )
         self.type = message["sport"].lower()
         if "sub_sport" in message:
-            self.type = message["sub_sport"].lower() + "_" + message["sport"].lower()
+            if self.type in message["sub_sport"].lower():
+                self.type = message["sub_sport"].lower()
+            else:
+                self.type = (
+                    message["sub_sport"].lower() + "_" + message["sport"].lower()
+                )
 
         # moving_dict
         self.moving_dict["distance"] = message.get("total_distance") or 0
