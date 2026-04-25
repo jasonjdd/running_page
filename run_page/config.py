@@ -68,6 +68,7 @@ TYPE_DICT = {
     "Ride": "Ride",
     "open_water_swimming": "Swim",
     "road_biking": "Ride",
+    "road_cycling": "Ride",
     "VirtualRide": "VirtualRide",
     "indoor_cycling": "Indoor Ride",
     "walking": "Walk",
