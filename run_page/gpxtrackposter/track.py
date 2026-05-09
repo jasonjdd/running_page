@@ -197,11 +197,12 @@ class Track:
             self.start_time_local, self.end_time_local = parse_datetime_to_local(
                 self.start_time, self.end_time, None
             )
+
             self.moving_dict["distance"] = 0
-            self.moving_dict["moving_time"] = 1
-            self.moving_dict["elapsed_time"] = 1
+            self.moving_dict["moving_time"] = datetime.timedelta(seconds=10)
+            self.moving_dict["elapsed_time"] = datetime.timedelta(seconds=10)
             self.moving_dict["average_speed"] = 0
-            self.average_heartrate = 0
+            self.average_heartrate = 79
             return
         gpx.simplify(0.5)
         polyline_container = []
