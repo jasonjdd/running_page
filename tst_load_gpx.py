@@ -1,4 +1,4 @@
-from run_page.gpxtrackposter.track_loader import load_fit_file
+from run_page.gpxtrackposter.track_loader import load_gpx_file
 
 import datetime
 
@@ -15,9 +15,6 @@ print(f"原始时间戳: {unix_timestamp}")
 print(f"本地时间: {readable_datetime}")
 print(f"UTC 时间 (无时区偏移): {utc_datetime}")
 
-# 三峰大环线
-# fit_file = "FIT_OUT/476551490205417773.fit"
-# 力量训练
-# fit_file = "FIT_OUT/476689399457808483.fit"
-fit_file = "FIT_OUT/462941850712440836.fit"
-t = load_fit_file(fit_file)
+# gpx_file = "GPX_OUT/591405933.gpx"
+gpx_file = "GPX_OUT/591374295.gpx"
+t = load_gpx_file(gpx_file)

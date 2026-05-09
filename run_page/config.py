@@ -57,6 +57,7 @@ TYPE_DICT = {
     "RUN": "Run",
     "Run": "Run",
     "run": "Run",
+    "generic_running": "Run",
     "track_running": "Run",
     "trail_running": "Trail Run",
     "strength_training_training": "Train",

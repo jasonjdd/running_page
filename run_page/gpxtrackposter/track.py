@@ -177,15 +177,32 @@ class Track:
 
     def _load_gpx_data(self, gpx):
         self.start_time, self.end_time = gpx.get_time_bounds()
+        if self.start_time is None:
+            self.start_time = gpx.time
+        if self.end_time is None:
+            self.end_time = gpx.time
         # use timestamp as id
         self.run_id = self.__make_run_id(self.start_time)
-        if self.start_time is None:
-            raise TrackLoadError("Track has no start time.")
-        if self.end_time is None:
-            raise TrackLoadError("Track has no end time.")
+        self.device = gpx.creator
+        # if self.start_time is None:
+        #     raise TrackLoadError("Track has no start time.")
+        # if self.end_time is None:
+        #     raise TrackLoadError("Track has no end time.")
         self.length = gpx.length_2d()
         if self.length == 0:
-            raise TrackLoadError("Track is empty.")
+            # raise TrackLoadError("Track is empty.")
+            # strangth training has no distance, we just ignore this error
+            for t in gpx.tracks:
+                self.type = t.type.lower()
+            self.start_time_local, self.end_time_local = parse_datetime_to_local(
+                self.start_time, self.end_time, None
+            )
+            self.moving_dict["distance"] = 0
+            self.moving_dict["moving_time"] = 1
+            self.moving_dict["elapsed_time"] = 1
+            self.moving_dict["average_speed"] = 0
+            self.average_heartrate = 0
+            return
         gpx.simplify(0.5)
         polyline_container = []
         heart_rate_list = []
