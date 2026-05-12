@@ -42,6 +42,7 @@ export interface Activity {
   average_heartrate?: number | null;
   average_speed: number;
   streak: number;
+  workout_name: string;
 }
 
 const titleForShow = (run: Activity): string => {

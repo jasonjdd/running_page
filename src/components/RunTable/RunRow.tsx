@@ -16,6 +16,7 @@ const RunRow = ({ elementIndex, locateActivity, run, runIndex, setRunIndex, isAl
   const paceParts = formatPace(run.average_speed);
   const heartRate = run.average_heartrate;
   const runTime = formatRunTime(run.moving_time);
+  const displayTitle = run.workout_name ? run.workout_name : locationForRun(run).city + titleForRun(run);
   const handleClick = () => {
     if (runIndex === elementIndex) {
       setRunIndex(-1);
@@ -33,7 +34,7 @@ const RunRow = ({ elementIndex, locateActivity, run, runIndex, setRunIndex, isAl
       onClick={handleClick}
       style={{ color: colorFromType(run.type) }}
     >
-      <td>{locationForRun(run).city + titleForRun(run)}</td>
+      <td>{displayTitle}</td>
       <td>{distance}</td>
       {paceParts && <td>{paceParts}</td>}
       <td>{heartRate && heartRate.toFixed(0)}</td>

@@ -53,6 +53,7 @@ class Track:
         self.start_latlng = []
         self.type = "Run"
         self.device = ""
+        self.workout_name = ""  # 这个属性是为了保存力量训练的 workout name，因为力量训练没有距离和轨迹，所以我们用 workout name 来区分不同的力量训练记录
 
     def load_gpx(self, file_name):
         """
@@ -123,6 +124,7 @@ class Track:
         polyline_data = polyline.decode(summary_polyline) if summary_polyline else []
         self.polylines = [[s2.LatLng.from_degrees(p[0], p[1]) for p in polyline_data]]
         self.run_id = activity.run_id
+        self.workout_name = activity.workout_name
 
     def bbox(self):
         """Compute the smallest rectangle that contains the entire track (border box)."""
@@ -271,6 +273,15 @@ class Track:
                 self.type = (
                     message["sub_sport"].lower() + "_" + message["sport"].lower()
                 )
+            # 如果是力量训练，就记录下力量训练的名称，代指力量训练的内容，后面可以根据这个名称来区分不同的力量训练记录
+            if (
+                self.type == "training"
+                and message["sub_sport"].lower() == "strength_training"
+            ):
+                if "workout_mesgs" in fit:
+                    workout_message = fit["workout_mesgs"][0]
+                    if "wkt_name" in workout_message:
+                        self.workout_name = workout_message["wkt_name"]
 
         # moving_dict
         self.moving_dict["distance"] = message.get("total_distance") or 0
@@ -375,6 +386,7 @@ class Track:
             ),
             "map": run_map(self.polyline_str),
             "start_latlng": self.start_latlng,
+            "workout_name": self.workout_name,
         }
         d.update(self.moving_dict)
         # return a nametuple that can use . to get attr

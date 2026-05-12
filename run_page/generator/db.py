@@ -53,6 +53,7 @@ class Activity(Base):
     summary_polyline = Column(String)
     average_heartrate = Column(Float)
     average_speed = Column(Float)
+    workout_name = Column(String)
     streak = None
 
     def to_dict(self):
@@ -117,6 +118,7 @@ def update_or_create_activity(session, run_activity):
                 summary_polyline=(
                     run_activity.map and run_activity.map.summary_polyline or ""
                 ),
+                workout_name=run_activity.workout_name,
             )
             session.add(activity)
             created = True
@@ -131,6 +133,7 @@ def update_or_create_activity(session, run_activity):
             activity.summary_polyline = (
                 run_activity.map and run_activity.map.summary_polyline or ""
             )
+            activity.workout_name = run_activity.workout_name
     except Exception as e:
         print(f"something wrong with {run_activity.id}")
         print(str(e))
