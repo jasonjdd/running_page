@@ -35,6 +35,7 @@ ACTIVITY_KEYS = [
     "summary_polyline",
     "average_heartrate",
     "average_speed",
+    "workout_name",
 ]
 
 
