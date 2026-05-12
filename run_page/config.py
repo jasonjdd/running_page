@@ -69,6 +69,7 @@ TYPE_DICT = {
     "CYCLING": "Ride",
     "riding": "Ride",
     "Ride": "Ride",
+    "generic_cycling": "Ride",
     "open_water_swimming": "Swim",
     "road_biking": "Ride",
     "road_cycling": "Ride",
