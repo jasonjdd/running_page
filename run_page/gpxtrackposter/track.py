@@ -274,10 +274,7 @@ class Track:
                     message["sub_sport"].lower() + "_" + message["sport"].lower()
                 )
             # 如果是力量训练，就记录下力量训练的名称，代指力量训练的内容，后面可以根据这个名称来区分不同的力量训练记录
-            if (
-                self.type == "training"
-                and message["sub_sport"].lower() == "strength_training"
-            ):
+            if self.type == "strength_training":
                 if "workout_mesgs" in fit:
                     workout_message = fit["workout_mesgs"][0]
                     if "wkt_name" in workout_message:
