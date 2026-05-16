@@ -46,14 +46,14 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           # if your default branches is not master, please change it here
           ref: master
 
       - name: Cache Data Files
         if: inputs.save_data_in_github_cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             activities
@@ -73,12 +73,12 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
-      - uses: pnpm/action-setup@v3
+      - uses: pnpm/action-setup@v4
         name: Install pnpm
         with:
-          version: 8
+          version: 9
           run_install: false
 
       - name: Get pnpm store directory
