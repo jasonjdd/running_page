@@ -70,24 +70,23 @@ jobs:
             ${{ inputs.data_cache_prefix }}-${{ github.sha }}-
             ${{ inputs.data_cache_prefix }}-
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4  
+        with:
+          run_install: false
+
       - name: Setup Node.js environment
         uses: actions/setup-node@v5
         with:
           node-version: '22'
-
-      - uses: pnpm/action-setup@v5
-        name: Install pnpm
-        with:
-          # version: 9
-          run_install: false
 
       - name: Get pnpm store directory
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
+      - name: Setup pnpm cache
+        uses: actions/cache@v5
         with:
           path: ${{ env.STORE_PATH }}
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -96,13 +95,14 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+
       - name: Build
         run: PATH_PREFIX=/${{ github.event.repository.name }} pnpm build
         env:
           VITE_MAPBOX_TOKEN: ${{ vars.VITE_MAPBOX_TOKEN }}
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           # Upload dist repository
           path: './dist'
