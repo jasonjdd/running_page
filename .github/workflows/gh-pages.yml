@@ -70,25 +70,21 @@ jobs:
             ${{ inputs.data_cache_prefix }}-${{ github.sha }}-
             ${{ inputs.data_cache_prefix }}-
 
-      # 【调整 1】先安装 pnpm（不填 version，自动读取项目 package.json 中的 packageManager）
       - name: Install pnpm
-        uses: pnpm/action-setup@v4  # 官方目前稳定大版本为 v4
+        uses: pnpm/action-setup@v4  
         with:
           run_install: false
 
-      # 【调整 2】再设置 Node.js 环境
       - name: Setup Node.js environment
         uses: actions/setup-node@v5
         with:
           node-version: '22'
 
-      # 【调整 3】此时 pnpm 已存在，可以安全地获取 store 路径了
       - name: Get pnpm store directory
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      # 【调整 4】将 cache 统一升级到支持 Node 24 运行时的 v5（或者保持 v4 也行，v5 更现代）
       - name: Setup pnpm cache
         uses: actions/cache@v5
         with:
@@ -105,7 +101,6 @@ jobs:
         env:
           VITE_MAPBOX_TOKEN: ${{ vars.VITE_MAPBOX_TOKEN }}
 
-      # 【调整 5】顺手将上传插件升级到最新的 v4 大版本
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
