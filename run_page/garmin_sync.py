@@ -20,6 +20,7 @@ import httpx
 from config import FOLDER_DICT, JSON_FILE, SQL_FILE, config
 from garmin_device_adaptor import wrap_device_info
 from utils import make_activities_file
+from strava_sync_fit import upload_fit_file_to_strava
 
 # logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -334,6 +335,12 @@ if __name__ == "__main__":
         default="gpx",
         help="to download personal documents or ebook",
     )
+
+    # add strava sync args
+    parser.add_argument("--strava_client_id", help="strava client id")
+    parser.add_argument("--strava_client_secret", help="strava client secret")
+    parser.add_argument("--strava_refresh_token", help="strava refresh token")
+
     options = parser.parse_args()
     secret_string = options.secret_string
     auth_domain = (
@@ -362,6 +369,27 @@ if __name__ == "__main__":
         )
     )
     loop.run_until_complete(future)
+
+    new_downloaded_ids = future.result()
+    print(f"成功获取到新同步的ID列表: {new_downloaded_ids}")
+    # 3. 如果有新下载的文件，且当前下载模式是 fit，生成完整的文件路径列表
+    if new_downloaded_ids and file_type == "fit":
+        new_fit_files = [os.path.join(folder, f"{id}.fit") for id in new_downloaded_ids]
+        print(f"准备上传到 Strava 的 FIT 文件列表: {new_fit_files}")
+        # 4. 如果 Strava 同步参数完整，执行上传
+        if (
+            options.strava_client_id
+            and options.strava_client_secret
+            and options.strava_refresh_token
+        ):
+            strava_client = make_strava_client(
+                options.strava_client_id,
+                options.strava_client_secret,
+                options.strava_refresh_token,
+            )
+            for fit_file in new_fit_files:
+                upload_fit_file_to_strava(strava_client, fit_file)
+
     # fit may contain gpx(maybe upload by user)
     if file_type == "fit":
         make_activities_file(SQL_FILE, FOLDER_DICT["gpx"], JSON_FILE, file_suffix="gpx")
