@@ -19,7 +19,7 @@ import garth
 import httpx
 from config import FOLDER_DICT, JSON_FILE, SQL_FILE, config
 from garmin_device_adaptor import wrap_device_info
-from utils import make_activities_file
+from utils import make_activities_file, make_strava_client
 from strava_sync_fit import upload_fit_file_to_strava
 
 # logging.basicConfig(level=logging.DEBUG)
