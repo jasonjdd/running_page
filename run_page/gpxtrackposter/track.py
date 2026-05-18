@@ -278,7 +278,13 @@ class Track:
                 if "workout_mesgs" in fit:
                     workout_message = fit["workout_mesgs"][0]
                     if "wkt_name" in workout_message:
-                        self.workout_name = workout_message["wkt_name"]
+                        # self.workout_name = workout_message["wkt_name"]
+                        wkt_name_raw = workout_message["wkt_name"]
+                        # 如果是列表，直接取第一个元素；如果是字符串，直接使用
+                        if isinstance(wkt_name_raw, list) and wkt_name_raw:
+                            self.workout_name = str(wkt_name_raw[0]).strip()
+                        else:
+                            self.workout_name = str(wkt_name_raw).strip()
 
         # moving_dict
         self.moving_dict["distance"] = message.get("total_distance") or 0
