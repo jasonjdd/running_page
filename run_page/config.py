@@ -66,6 +66,7 @@ TYPE_DICT = {
     "generic": "Train",
     "floor_climbing": "Train",
     "jump_rope": "Train",
+    "generic_jump_rope": "Train",
     "cycling": "Ride",
     "CYCLING": "Ride",
     "riding": "Ride",
