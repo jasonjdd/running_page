@@ -240,6 +240,8 @@ const titleForType = (type: string): string => {
       return RUN_TITLES.WALK_TITLE;
     case 'Train':
       return RUN_TITLES.TRAIN_TITLE;
+    case 'JumpRope':
+      return RUN_TITLES.JUMP_ROPE_TITLE;
     default:
       return RUN_TITLES.RUN_TITLE;
   }
