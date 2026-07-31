@@ -19318,5 +19318,50 @@
 "average_speed": 2.815,
 "workout_name": "",
 "streak": 2
+},
+{
+"run_id": 1785412337000,
+"name": "strength_training by garmin fr265_large",
+"distance": 0.0,
+"moving_time": "0:39:06.009000",
+"type": "Train",
+"start_date": "2026-07-30 11:52:17",
+"start_date_local": "2026-07-30 19:52:17",
+"location_country": "",
+"summary_polyline": null,
+"average_heartrate": 87.0,
+"average_speed": 0.0,
+"workout_name": "\u529b\u91cf\u5f3a\u53161",
+"streak": 2
+},
+{
+"run_id": 1785451472000,
+"name": "generic_jump_rope by garmin fr265_large",
+"distance": 0.0,
+"moving_time": "0:09:43.880000",
+"type": "JumpRope",
+"start_date": "2026-07-30 22:44:32",
+"start_date_local": "2026-07-31 06:44:32",
+"location_country": "",
+"summary_polyline": null,
+"average_heartrate": 114.0,
+"average_speed": 0.0,
+"workout_name": "",
+"streak": 3
+},
+{
+"run_id": 1785457162000,
+"name": "generic_cycling by garmin fr265_large",
+"distance": 3008.83,
+"moving_time": "0:14:43.627000",
+"type": "Ride",
+"start_date": "2026-07-31 00:19:22",
+"start_date_local": "2026-07-31 08:19:22",
+"location_country": "\u56de\u9f99\u89c2\u4e1c\u5927\u8857, \u9f99\u6cfd\u56ed\u8857\u9053, \u660c\u5e73\u533a, \u5317\u4eac\u5e02, 100096, \u4e2d\u56fd",
+"summary_polyline": "}_ssF_sbeU@`@D~@BfAEh@QT_@Bi@Fa@Fe@FcABu@D{@B{@@m@Bg@Bu@D_AH}@Bu@Do@By@Fo@Fq@D}@Dq@?y@Da@JGXCb@A@KBYFKP?D?t@@~@@|@?H@H?R@hA@dA@t@?H?H?J?PBzABfA?fA@f@@p@@rA?r@@D???????????H?`@@v@@`ABbB@jA?V@T?l@@T@fADbB?HF`@@l@Dh@@j@Dl@Bh@Dt@@`@FxABhABl@@J@L@N?B???DBTBr@Dh@@HDz@HfAJ|AFdAHvABr@Dh@JrBHdBDlA@r@Fr@BlA@^DRFn@DtANpAFfADz@B^H~ADr@@HHrAFvAFjAFtAHfAF|@?F?z@Dz@@P@P?F@RFr@Fp@MTc@RQFWHE@w@P_@Ju@Xi@P[J]JEBEBEA?????BA?GF",
+"average_heartrate": 92.0,
+"average_speed": 3.405,
+"workout_name": "",
+"streak": 3
 }
 ]
