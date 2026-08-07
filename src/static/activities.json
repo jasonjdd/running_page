@@ -19468,5 +19468,35 @@
 "average_speed": 2.653,
 "workout_name": "",
 "streak": 9
+},
+{
+"run_id": 1786006260000,
+"name": "strength_training by garmin fr265_large",
+"distance": 0.0,
+"moving_time": "0:43:10.849000",
+"type": "Train",
+"start_date": "2026-08-06 08:51:00",
+"start_date_local": "2026-08-06 16:51:00",
+"location_country": "",
+"summary_polyline": null,
+"average_heartrate": 85.0,
+"average_speed": 0.0,
+"workout_name": "\u529b\u91cf\u5f3a\u53161",
+"streak": 9
+},
+{
+"run_id": 1786060199000,
+"name": "generic_cycling by garmin fr265_large",
+"distance": 16317.18,
+"moving_time": "1:13:34.335000",
+"type": "Ride",
+"start_date": "2026-08-06 23:49:59",
+"start_date_local": "2026-08-07 07:49:59",
+"location_country": "\u9f99\u9526\u4e8c\u8857, \u970d\u8425\u8857\u9053, \u660c\u5e73\u533a, \u5317\u4eac\u5e02, 100096, \u4e2d\u56fd",
+"summary_polyline": "egtsFcideU?l@@f@@L@x@?bAC~@@dAHr@XLj@Et@Cl@?n@Gv@Cl@Eb@Eh@Ch@Ef@Gj@?\\An@Cd@Ep@Gd@Ap@GJA??J?b@Av@Kf@GX?j@Ep@G`@Ih@Gd@ATJFNJVDBF@ZCj@Al@Et@Gj@Ej@G|@Gr@E~@G~@Gh@DBZ@rA@bA@\\@r@?Z@n@@f@@pA@f@@b@@zABxA?b@@V?LHb@RLl@AF?XA^An@Cp@?D?h@Dr@KVEP?f@AZAX?n@Gl@Al@@XEH?X@j@Cb@Ah@E~@Ev@Aj@?p@Aj@ALA????????NCb@Bb@DPCD?D?DADCVGp@Aj@EL?D?XFDDF^Av@?`A?r@?F?rAAz@?jA?fAApAE|@A|@?x@Cf@@x@Eb@DN?V?dAB~@?F?fA?pA?FA|@?bA?dAAz@?dA?|@ChACfA?dAEb@Dp@AF@FB@@?N@\\?RFDJBd@AfA?j@?h@AtAA`A?z@?f@?NAp@?F?h@@LAz@Ap@ATCp@CZ?TCXAx@?`@?T?x@Ap@?z@Ab@?T?F@d@?l@At@?F?v@At@?F?`AAx@?F?pA?|AAx@?P?F?^?p@?t@?XAnA?bAAx@?jA?dA?tA?x@Ax@?`@?f@AxA?pA?hAA`A?^Ah@?^?`@?`A?^Av@I~@OdAC|@?NAjA@|AA|A?jBA~AAzA@nAA~@ApA?pA?dA?XAtA?nAAtBApA?b@?v@?xAHxALj@FTBNLj@DV@v@?fAAdA?tAAF?hA?nAAzA?^?p@AnB?F?fAAxAAnA?zAAdBAnAEhAALMlAQfAWlAGPa@nAIRIRMNQHI?IAQGOOGWCW?M@MHUb@[\\O\\G^A\\BZ?D@l@Dv@Pf@BT^@r@?~@?\\A`AAP?|@?r@@t@A|@?F?j@?XDnAD|@HvAJlARlAJj@F`@Np@HVRt@L`@Xx@^|@\\v@BDZl@LRj@z@NRZ`@v@x@n@f@VR^XXNRLn@X~@^z@Rl@JLBdAFjA@|@Az@KlAQz@WhAe@z@_@jAi@v@_@z@]`Ac@`Ae@d@QTKh@WFChAg@x@_@`Aa@v@_@v@]p@YhAi@l@Wt@]|@_@n@[Va@Pu@Cw@Go@Ee@M_BMuAHy@\\g@f@Sf@MDECIG@E@g@PEBg@\\Sb@I|@H|@N~AJpA@HDhAMj@c@b@{@`@cAb@w@\\g@Ru@\\SJ[N[N[L}@`@u@\\{@^}@`@aA`@e@Ta@Py@^{@^y@^{@^m@XQJYJa@Pq@Zy@VcAT{@LuAFeA@{@Gw@K_AOSIYIk@QYOYMy@i@o@g@w@o@CEw@}@k@u@g@w@CGc@{@]u@[}@]_AW{@YgASmASoAI}@CYGaA?GGcBAwA?aB?kA?Q?mA@aB?wAK_A]Ya@AQ?m@Is@E]Eq@@G@w@Vc@b@Mf@@PBZFLRV^HLAVORe@Ru@Rk@FQNw@BGPcALiAHcA?KDuA?gA?]?o@@w@?e@@eA?uAB{A?cB?wA@kB?}A?qA?cBBwAAi@Ea@UeAUkAC]As@@sA?_B?}A@mA?eB@qB?U?e@?s@@q@?eA@cBAqA@S?eB?_B@g@@eA?wA@eBDaBTcB@i@?]?uA@aB?aB@wA?y@@[?aA?g@?mA@]?{@@eB?yA?uA?sA@{A?gB@_B?}A?gB@}A?gB@sA?sA@i@?gA?gB@yA?s@?U@U@UBa@Dq@@s@@M?M?Y@_B?K@kB?M?}A@Y?gA?W?sA?K@qAGs@KGK?KGAI@i@@w@?gA?qA@eB?mA?kA@oA?w@?_@@i@?gA?yA@I?{@?wA@q@?i@@qA?gB?}A?k@@aA?w@?U?uA?_@AsA?cAMu@[Ks@B}@@O?c@B}@Bs@BW@i@@[@UGQC[HYFU?C?]@I?u@Da@@a@@i@@m@?g@Dc@BOIIK????CBC@WJWJu@Ay@@g@Bo@D_@?o@@w@Bo@BG?}@Do@@o@Bk@?e@BW@s@@q@BoABo@@S@QAW?cANWX@r@?nA@P@^@f@AF??CB??C@A@A@C?",
+"average_heartrate": 87.0,
+"average_speed": 3.696,
+"workout_name": "",
+"streak": 10
 }
 ]
