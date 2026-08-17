@@ -19633,5 +19633,20 @@
 "average_speed": 2.985,
 "workout_name": "",
 "streak": 3
+},
+{
+"run_id": 1786869061000,
+"name": "lap_swimming by garmin fr265_large",
+"distance": 1500.0,
+"moving_time": "1:12:13.945000",
+"type": "Swim",
+"start_date": "2026-08-16 08:31:01",
+"start_date_local": "2026-08-16 16:31:01",
+"location_country": "",
+"summary_polyline": null,
+"average_heartrate": 87.0,
+"average_speed": 0.555,
+"workout_name": "",
+"streak": 3
 }
 ]
