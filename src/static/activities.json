@@ -19873,5 +19873,35 @@
 "average_speed": 2.678,
 "workout_name": "",
 "streak": 9
+},
+{
+"run_id": 1788081959000,
+"name": "lap_swimming by garmin fr265_large",
+"distance": 1500.0,
+"moving_time": "1:06:22.182000",
+"type": "Swim",
+"start_date": "2026-08-30 09:25:59",
+"start_date_local": "2026-08-30 17:25:59",
+"location_country": "",
+"summary_polyline": null,
+"average_heartrate": 113.0,
+"average_speed": 0.537,
+"workout_name": "",
+"streak": 9
+},
+{
+"run_id": 1788128683000,
+"name": "strength_training by garmin fr265_large",
+"distance": 0.0,
+"moving_time": "0:45:06.271000",
+"type": "Train",
+"start_date": "2026-08-30 22:24:43",
+"start_date_local": "2026-08-31 06:24:43",
+"location_country": "",
+"summary_polyline": null,
+"average_heartrate": 79.0,
+"average_speed": 0.0,
+"workout_name": "\u80f8\u80a9\u8180\u4e09\u5934",
+"streak": 10
 }
 ]
