@@ -19978,5 +19978,20 @@
 "average_speed": 0.0,
 "workout_name": "\u80cc\u540e\u675f\u4e8c\u5934",
 "streak": 13
+},
+{
+"run_id": 1788475367000,
+"name": "strength_training by garmin fr265_large",
+"distance": 0.0,
+"moving_time": "0:22:31.769000",
+"type": "Train",
+"start_date": "2026-09-03 22:42:47",
+"start_date_local": "2026-09-04 06:42:47",
+"location_country": "",
+"summary_polyline": null,
+"average_heartrate": 90.0,
+"average_speed": 0.0,
+"workout_name": "\u4fef\u5367\u6491\u8bad\u7ec3",
+"streak": 14
 }
 ]
