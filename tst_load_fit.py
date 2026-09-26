@@ -19,5 +19,7 @@ print(f"UTC 时间 (无时区偏移): {utc_datetime}")
 # fit_file = "FIT_OUT/476551490205417773.fit"
 # 力量训练
 # fit_file = "FIT_OUT/476689399457808483.fit"
-fit_file = "FIT_OUT/462941850712440836.fit"
+# fit_file = "FIT_OUT/592323059.fit"  # Garmin stranth training
+# fit_file = "FIT_OUT/592282024.fit"  # Garmin running
+fit_file = "FIT_OUT/595747700.fit"
 t = load_fit_file(fit_file)

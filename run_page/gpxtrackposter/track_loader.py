@@ -144,7 +144,7 @@ class TrackLoader:
             else:
                 dt = (t.start_time_local - last_end_time).total_seconds()
                 # 这里更改为1分钟内的数据合并，大于的不合并。原来判断是3600秒，一个小时
-                if 0 < dt < 50 and merged_tracks[-1].type == t.type:
+                if 0 < dt < 30 and merged_tracks[-1].type == t.type:
                     merged_tracks[-1].append(t)
                 else:
                     merged_tracks.append(t)
