@@ -20,6 +20,12 @@ type DistanceFilter = 'all' | '10' | '20' | '40';
 function typeIcon(type: string): string {
   const icons: Record<string, string> = {
     Run: '🏃',
+    Train: '🏋️',
+    Ride: '🚴',
+    Swim: '🏊',
+    Walk: '🚶',
+    Hike: '🥾',
+    Yoga: '🧘',
   };
   return icons[type] ?? '📌';
 }
@@ -205,11 +211,10 @@ export function ActivityLog({
                     selectedActivity?.run_id === a.run_id ? null : a
                   )
                 }
-                className={`cursor-pointer border-b border-[var(--color-border)]/30 transition-colors ${
-                  selectedActivity?.run_id === a.run_id
-                    ? 'border-l-2 border-l-[var(--color-accent)] bg-[var(--color-accent)]/10'
-                    : 'hover:bg-[var(--color-bg)]'
-                }`}
+                className={`cursor-pointer border-b border-[var(--color-border)]/30 transition-colors ${selectedActivity?.run_id === a.run_id
+                  ? 'border-l-2 border-l-[var(--color-accent)] bg-[var(--color-accent)]/10'
+                  : 'hover:bg-[var(--color-bg)]'
+                  }`}
               >
                 <td className="py-3 text-[var(--color-muted)]">
                   {a.start_date_local.slice(0, 16).replace('T', ' ')}
