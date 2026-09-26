@@ -70,4 +70,4 @@ jobs:
           pnpm run lint
           pnpm run build
         env:
-          VITE_MAPBOX_TOKEN: ${{ secrets.MAPBOX_TOKEN }}
+          VITE_MAPBOX_TOKEN: ${{ vars.VITE_MAPBOX_TOKEN }}

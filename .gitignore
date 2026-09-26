@@ -29,3 +29,8 @@ route.png
 route.svg
 
 .env
+
+# local debug scripts (keep them out of CI commits)
+tst/
+genAI.py
+tst.py
