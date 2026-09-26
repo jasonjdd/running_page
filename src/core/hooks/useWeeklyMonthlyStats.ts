@@ -100,7 +100,9 @@ export function useWeeklyMonthlyStats(
     });
 
     const weeklyAvgHeartRate =
-      weeklyTotalTime > 0 ? Math.round(weeklyHeartRateSum / weeklyTotalTime) : 0;
+      weeklyTotalTime > 0
+        ? Math.round(weeklyHeartRateSum / weeklyTotalTime)
+        : 0;
     const monthlyAvgHeartRate =
       monthlyTotalTime > 0
         ? Math.round(monthlyHeartRateSum / monthlyTotalTime)
