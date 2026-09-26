@@ -21,6 +21,7 @@ class Generator:
     def __init__(self, db_path):
         self.client = stravalib.Client()
         self.session = init_db(db_path)
+        self.only_run = False
 
         self.client_id = ""
         self.client_secret = ""
@@ -128,7 +129,9 @@ class Generator:
 
     def load(self):
         # if sub_type is not in the db, just add an empty string to it
-        query = self.session.query(Activity).filter(Activity.distance > 0.1)
+        query = self.session.query(Activity)
+        # 力量训练没有距离，不能按 distance 过滤（个人定制，原 fork 注释掉此行）
+        # query = query.filter(Activity.distance > 0.1)
         if self.only_run:
             query = query.filter(Activity.type == "Run")
 
@@ -140,6 +143,10 @@ class Generator:
         streak = 0
         last_date = None
         for activity in activities:
+            # 过滤掉相同起始时间的活动（个人定制：以本地开始时间为准去重）
+            if activity.start_date_local in seen_dates:
+                continue
+            seen_dates.add(activity.start_date_local)
             # Determine running streak.
             date = datetime.datetime.strptime(  # noqa: DTZ007
                 activity.start_date_local, "%Y-%m-%d %H:%M:%S"  # type: ignore

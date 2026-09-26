@@ -24,6 +24,7 @@ import { ActivityLog } from '@/components/ActivityLog';
 import { RouteMap } from '@/components/RouteMap';
 import { CalendarWidget } from '@/components/CalendarWidget';
 import { ProfileCard } from '@/components/ProfileCard';
+import { WeeklyMonthlyStats } from '@/components/WeeklyMonthlyStats';
 import { PersonalBest } from '@/components/PersonalBest';
 import { ChinaMap } from '@/components/ChinaMap';
 
@@ -202,6 +203,7 @@ function Dashboard() {
               {/* Right column */}
               <div className="flex min-w-0 flex-col gap-6 overflow-hidden">
                 <ProfileCard activities={activities} filter={filter} />
+                <WeeklyMonthlyStats activities={activities} />
                 <ChinaMap
                   activities={filtered}
                   filter={filter}

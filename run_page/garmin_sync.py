@@ -23,8 +23,9 @@ import httpx
 from config import FOLDER_DICT, JSON_FILE, SQL_FILE
 from garmin_device_adaptor import process_garmin_data
 from lxml import etree
+from strava_sync_fit import upload_fit_file_to_strava
 
-from utils import make_activities_file
+from utils import make_activities_file, make_strava_client
 
 # logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -462,6 +463,25 @@ if __name__ == "__main__":
     )
     loop.run_until_complete(future)
     new_ids, id2title = future.result()
+
+    # 如果有新下载的文件，且当前下载模式是 fit，生成完整的文件路径列表
+    if new_ids and file_type == "fit":
+        new_fit_files = [os.path.join(folder, f"{id}.fit") for id in new_ids]
+        print(f"准备上传到 Strava 的 FIT 文件列表: {new_fit_files}")
+        # 如果 Strava 同步参数完整，执行上传
+        if (
+            options.strava_client_id
+            and options.strava_client_secret
+            and options.strava_refresh_token
+        ):
+            strava_client = make_strava_client(
+                options.strava_client_id,
+                options.strava_client_secret,
+                options.strava_refresh_token,
+            )
+            for fit_file in new_fit_files:
+                upload_fit_file_to_strava(strava_client, fit_file)
+
     # fit may contain gpx(maybe upload by user)
     if file_type == "fit":
         make_activities_file(

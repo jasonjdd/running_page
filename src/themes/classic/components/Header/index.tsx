@@ -2,11 +2,28 @@ import { Link } from 'react-router-dom';
 import type { ReactElement } from 'react';
 import getSiteMetadata from '@core/hooks/useSiteMetadata';
 import { useTheme, Theme } from '../../hooks/useTheme';
+import useActivities from '../../hooks/useActivities';
+import { useWeeklyMonthlyStats } from '@core/hooks/useWeeklyMonthlyStats';
+import {
+  WEEK_STATISTIC_MESSAGE,
+  MONTH_STATISTIC_MESSAGE,
+} from '../../utils/const';
 import styles from './style.module.css';
 
 const Header = () => {
   const { logo, siteUrl, navLinks } = getSiteMetadata();
   const { theme, setTheme } = useTheme();
+  const { activities } = useActivities();
+  const {
+    weeklyRuns,
+    weeklyDistance,
+    weeklyAvgHeartRate,
+    weeklyAvgPaceMinutesPerKmString,
+    monthlyRuns,
+    monthlyDistance,
+    monthlyAvgHeartRate,
+    monthlyAvgPaceMinutesPerKmString,
+  } = useWeeklyMonthlyStats(activities);
 
   const icons: Record<Theme, ReactElement> = {
     dark: (
@@ -60,6 +77,25 @@ const Header = () => {
               <img className="h-16 w-16 rounded-full" alt="logo" src={logo} />
             </picture>
           </Link>
+        </div>
+        {/* 本周/本月跑步统计（个人定制，原 fork 中栏） */}
+        <div className="flex min-w-0 flex-1 flex-col justify-center px-4 text-sm">
+          <div className="truncate">
+            {WEEK_STATISTIC_MESSAGE(
+              weeklyRuns,
+              weeklyDistance,
+              weeklyAvgHeartRate,
+              weeklyAvgPaceMinutesPerKmString
+            )}
+          </div>
+          <div className="truncate text-[var(--color-muted)]">
+            {MONTH_STATISTIC_MESSAGE(
+              monthlyRuns,
+              monthlyDistance,
+              monthlyAvgHeartRate,
+              monthlyAvgPaceMinutesPerKmString
+            )}
+          </div>
         </div>
         <div className="flex flex-wrap items-center justify-end gap-3 text-right">
           {navLinks.map((n) => (

@@ -26,3 +26,47 @@ UTC_TIMEZONE = "UTC"
 
 start_point = namedtuple("start_point", "lat lon")
 run_map = namedtuple("polyline", "summary_polyline")
+
+# add more type here
+TYPE_DICT = {
+    "running": "Run",
+    "RUN": "Run",
+    "Run": "Run",
+    "run": "Run",
+    "generic_running": "Run",
+    "track_running": "Run",
+    "indoor_running": "Run",
+    "trail_running": "Trail Run",
+    "strength_training_training": "Train",
+    "strength_training": "Train",
+    "generic": "Train",
+    "floor_climbing": "Train",
+    "jump_rope": "JumpRope",
+    "generic_jump_rope": "JumpRope",
+    "cycling": "Ride",
+    "CYCLING": "Ride",
+    "riding": "Ride",
+    "Ride": "Ride",
+    "generic_cycling": "Ride",
+    "open_water_swimming": "Swim",
+    "road_biking": "Ride",
+    "road_cycling": "Ride",
+    "VirtualRide": "VirtualRide",
+    "indoor_cycling": "Indoor Ride",
+    "walking": "Walk",
+    "Walk": "Walk",
+    "hiking": "Hike",
+    "Hike": "Hike",
+    "swimming": "Swim",
+    "Swim": "Swim",
+    "lap_swimming": "Swim",
+    "trainning": "Train",
+    "rowing": "Rowing",
+    "RoadTrip": "RoadTrip",
+    "flight": "Flight",
+    "kayaking": "Kayaking",
+    "Snowboard": "Snowboard",
+    "resort_skiing_snowboarding_ws": "Ski",  # garmin
+    "AlpineSki": "Ski",  # strava
+    "Ski": "Ski",
+}

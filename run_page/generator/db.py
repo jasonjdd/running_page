@@ -44,6 +44,7 @@ ACTIVITY_KEYS = [
     "average_heartrate",
     "average_speed",
     "elevation_gain",
+    "workout_name",
 ]
 
 
@@ -64,6 +65,7 @@ class Activity(Base):
     average_heartrate = Column(Float)
     average_speed = Column(Float)
     elevation_gain = Column(Float)
+    workout_name = Column(String)
     streak = None
 
     def to_dict(self):
@@ -148,7 +150,7 @@ def update_or_create_activity(session, run_activity):
                 summary_polyline=(
                     run_activity.map and run_activity.map.summary_polyline or ""
                 ),
-                workout_name=run_activity.workout_name,
+                workout_name=getattr(run_activity, "workout_name", ""),
             )
             session.add(activity)
             created = True
@@ -162,6 +164,7 @@ def update_or_create_activity(session, run_activity):
             activity.average_heartrate = run_activity.average_heartrate
             activity.average_speed = float(run_activity.average_speed)
             activity.elevation_gain = current_elevation_gain
+            activity.workout_name = getattr(run_activity, "workout_name", "")
             activity.summary_polyline = (
                 run_activity.map and run_activity.map.summary_polyline or ""
             )

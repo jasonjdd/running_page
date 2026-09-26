@@ -13,12 +13,12 @@ import gpxpy as mod_gpxpy
 import lxml
 import polyline
 import s2sphere as s2
+from config import TYPE_DICT
 from garmin_fit_sdk import Decoder, Stream
 from garmin_fit_sdk.util import FIT_EPOCH_S
 from polyline_processor import filter_out
 from rich import print
 from tcxreader.tcxreader import TCXReader
-from config import TYPE_DICT
 
 from .exceptions import TrackLoadError
 from .utils import get_normalized_sport_type, parse_datetime_to_local
@@ -143,6 +143,9 @@ class Track:
         self.run_id = activity.run_id
         self.type = get_normalized_sport_type(activity.type)
         self.subtype = activity.subtype if hasattr(activity, "subtype") else None
+        self.workout_name = (
+            activity.workout_name if hasattr(activity, "workout_name") else ""
+        )
         # Load moving_dict from database
         self.moving_dict = {
             "distance": self.length,
@@ -473,7 +476,7 @@ class Track:
         d = {
             "id": self.run_id,
             "name": (self.track_name if self.track_name else ""),  # maybe change later
-            "type": self.type,
+            "type": TYPE_DICT.get(self.type.lower(), self.type),
             "subtype": (self.subtype if self.subtype else ""),
             "start_date": self.start_time.strftime("%Y-%m-%d %H:%M:%S"),
             "end": self.end_time.strftime("%Y-%m-%d %H:%M:%S"),

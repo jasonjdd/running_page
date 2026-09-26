@@ -2,6 +2,7 @@ import {
   formatPace,
   titleForRun,
   formatRunTime,
+  locationForRun,
   Activity,
   RunIds,
 } from '../../utils/utils';
@@ -15,7 +16,6 @@ interface IRunRowProperties {
   run: Activity;
   runIndex: number;
   setRunIndex: (_ndex: number) => void;
-  isAlternateWeek?: boolean;
 }
 
 const RunRow = ({
@@ -29,7 +29,10 @@ const RunRow = ({
   const paceParts = run.average_speed ? formatPace(run.average_speed) : null;
   const heartRate = run.average_heartrate;
   const runTime = formatRunTime(run.moving_time);
-  const displayTitle = run.workout_name ? run.workout_name : locationForRun(run).city + titleForRun(run);
+  // 力量训练用 workout_name 显示，其余用 城市 + 类型标题
+  const displayTitle = run.workout_name
+    ? run.workout_name
+    : locationForRun(run).city + titleForRun(run);
   const handleClick = () => {
     if (runIndex === elementIndex) {
       setRunIndex(-1);
@@ -42,7 +45,7 @@ const RunRow = ({
 
   return (
     <tr
-      className={`${styles.runRow} ${runIndex === elementIndex ? styles.selected : ''} ${isAlternateWeek ? styles.altWeek : ''}`}
+      className={`${styles.runRow} ${runIndex === elementIndex ? styles.selected : ''}`}
       key={run.start_date_local}
       onClick={handleClick}
       tabIndex={0}
@@ -63,7 +66,6 @@ const RunRow = ({
       <td>{heartRate && heartRate.toFixed(0)}</td>
       <td>{runTime}</td>
       <td className={styles.runDate}>{run.start_date_local}</td>
-      <td>{run.name}</td>
     </tr>
   );
 };

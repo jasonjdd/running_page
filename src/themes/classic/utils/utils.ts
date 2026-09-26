@@ -4,6 +4,18 @@ import {
   RUN_TITLES,
   ACTIVITY_TYPES,
   RICH_TITLE,
+  WORKOUT_TIME_TITLES,
+  TRAIN_TITLE,
+  JUMP_ROPE_TITLE,
+  INDOOR_RIDE_TITLE,
+  VIRTUAL_RIDE_TITLE,
+  ROWING_TITLE,
+  KAYAKING_TITLE,
+  SNOWBOARD_TITLE,
+  SKI_TITLE,
+  ROAD_TRIP_TITLE,
+  FLIGHT_TITLE,
+  WALK_TITLE,
 } from './const';
 
 export type Coordinate = [number, number];
@@ -39,6 +51,9 @@ const titleForShow = (run: Activity): string => {
   const date = run.start_date_local.slice(0, 11);
   const distance = (run.distance / M_TO_DIST).toFixed(2);
   let name = 'Run';
+  if (run.name.slice(0, 7) === 'Running') {
+    name = 'run';
+  }
   if (run.name) {
     name = run.name;
   }
@@ -215,7 +230,98 @@ const getActivitySport = (act: Activity): string => {
   else if (act.type.includes('skiing')) {
     return ACTIVITY_TYPES.SKIING_TITLE;
   }
+  // personal customization: display-name types stored in db
+  else if (act.type === 'Trail Run') {
+    return ACTIVITY_TYPES.RUN_TRAIL_TITLE;
+  } else if (act.type === 'Train') {
+    return TRAIN_TITLE;
+  } else if (act.type === 'JumpRope') {
+    return JUMP_ROPE_TITLE;
+  } else if (act.type === 'Ride') {
+    return ACTIVITY_TYPES.CYCLING_TITLE;
+  } else if (act.type === 'Indoor Ride') {
+    return INDOOR_RIDE_TITLE;
+  } else if (act.type === 'VirtualRide') {
+    return VIRTUAL_RIDE_TITLE;
+  } else if (act.type === 'Swim') {
+    return ACTIVITY_TYPES.SWIMMING_TITLE;
+  } else if (act.type === 'Walk') {
+    return WALK_TITLE;
+  } else if (act.type === 'Hike') {
+    return ACTIVITY_TYPES.HIKING_TITLE;
+  } else if (act.type === 'Rowing') {
+    return ROWING_TITLE;
+  } else if (act.type === 'Kayaking') {
+    return KAYAKING_TITLE;
+  } else if (act.type === 'Snowboard') {
+    return SNOWBOARD_TITLE;
+  } else if (act.type === 'Ski') {
+    return SKI_TITLE;
+  } else if (act.type === 'RoadTrip') {
+    return ROAD_TRIP_TITLE;
+  } else if (act.type === 'Flight') {
+    return FLIGHT_TITLE;
+  }
   return '';
+};
+
+const titleForType = (type: string): string => {
+  switch (type) {
+    case 'Run':
+      return ACTIVITY_TYPES.RUN_GENERIC_TITLE;
+    case 'Full Marathon':
+      return RUN_TITLES.FULL_MARATHON_RUN_TITLE;
+    case 'Half Marathon':
+      return RUN_TITLES.HALF_MARATHON_RUN_TITLE;
+    case 'Trail Run':
+      return ACTIVITY_TYPES.RUN_TRAIL_TITLE;
+    case 'Ride':
+      return ACTIVITY_TYPES.CYCLING_TITLE;
+    case 'Indoor Ride':
+      return INDOOR_RIDE_TITLE;
+    case 'VirtualRide':
+      return VIRTUAL_RIDE_TITLE;
+    case 'Hike':
+      return ACTIVITY_TYPES.HIKING_TITLE;
+    case 'Rowing':
+      return ROWING_TITLE;
+    case 'Swim':
+      return ACTIVITY_TYPES.SWIMMING_TITLE;
+    case 'RoadTrip':
+      return ROAD_TRIP_TITLE;
+    case 'Flight':
+      return FLIGHT_TITLE;
+    case 'Kayaking':
+      return KAYAKING_TITLE;
+    case 'Snowboard':
+      return SNOWBOARD_TITLE;
+    case 'Ski':
+      return SKI_TITLE;
+    case 'Walk':
+      return WALK_TITLE;
+    case 'Train':
+      return TRAIN_TITLE;
+    case 'JumpRope':
+      return JUMP_ROPE_TITLE;
+    default:
+      return ACTIVITY_TYPES.RUN_GENERIC_TITLE;
+  }
+};
+
+const titleForTime = (runHour: number): string => {
+  if (runHour >= 0 && runHour <= 10) {
+    return WORKOUT_TIME_TITLES.MORNING_TIME_TITLE;
+  }
+  if (runHour > 10 && runHour <= 14) {
+    return WORKOUT_TIME_TITLES.MIDDAY_TIME_TITLE;
+  }
+  if (runHour > 14 && runHour <= 18) {
+    return WORKOUT_TIME_TITLES.AFTERNOON_TIME_TITLE;
+  }
+  if (runHour > 18 && runHour <= 21) {
+    return WORKOUT_TIME_TITLES.EVENING_TIME_TITLE;
+  }
+  return WORKOUT_TIME_TITLES.NIGHT_TIME_TITLE;
 };
 
 const titleForRun = (run: Activity): string => {
@@ -231,128 +337,18 @@ const titleForRun = (run: Activity): string => {
       return `${city} ${activity_sport}`;
     }
   }
-  // 3. use time+length if location or type is not available
-  const runDistance = run.distance / 1000;
-  const runHour = +run.start_date_local.slice(11, 13);
-  if (runDistance > 20 && runDistance < 40) {
-    return RUN_TITLES.HALF_MARATHON_RUN_TITLE;
-  }
-  if (runDistance >= 40) {
-    return RUN_TITLES.FULL_MARATHON_RUN_TITLE;
-  }
-}
-
-const titleForTime = (runHour: number) => {
-  if (runHour >= 0 && runHour <= 10) {
-    return WORKOUT_TIME_TITLES.MORNING_TIME_TITLE;
-  }
-  if (runHour > 10 && runHour <= 14) {
-    return WORKOUT_TIME_TITLES.MIDDAY_TIME_TITLE;
-  }
-  if (runHour > 14 && runHour <= 18) {
-    return WORKOUT_TIME_TITLES.AFTERNOON_TIME_TITLE;
-  }
-  if (runHour > 18 && runHour <= 21) {
-    return WORKOUT_TIME_TITLES.EVENING_TIME_TITLE;
-  }
-  return WORKOUT_TIME_TITLES.NIGHT_TIME_TITLE;
-}
-
-const typeForRun = (run: Activity): string => {
-  const type = run.type
-  var distance = run.distance / 1000;
-  switch (type) {
-    case 'Run':
-      if (distance >= 40) {
-        return 'Full Marathon';
-      }
-      else if (distance > 20) {
-        return 'Half Marathon';
-      }
-      return 'Run';
-    case 'Trail':
-    case 'Trail Run':
-      // if (distance >= 40) {
-      //   return 'Full Marathon';
-      // }
-      // else if (distance > 20) {
-      //   return 'Half Marathon';
-      // }
-      return 'Trail Run';
-    case 'Ride':
-      return 'Ride';
-    case 'Indoor Ride':
-      return 'Indoor Ride';
-    case 'VirtualRide':
-      return 'Virtual Ride';
-    case 'Hike':
-      return 'Hike';
-    case 'Rowing':
-      return 'Rowing';
-    case 'Swim':
-      return 'Swim';
-    case 'RoadTrip':
-      return 'RoadTrip';
-    case 'Flight':
-      return 'Flight';
-    case 'Kayaking':
-      return 'Kayaking';
-    case 'Snowboard':
-      return 'Snowboard';
-    case 'Ski':
-      return 'Ski';
-    default:
-      return 'Run';
-  }
-}
-
-const titleForRun = (run: Activity): string => {
+  // 3. marathon titles only for runs, otherwise time + workout type
   const type = run.type;
   const runHour = +run.start_date_local.slice(11, 13);
   if (type == 'Run' || type == 'Trail Run') {
     const runDistance = run.distance / 1000;
     if (runDistance >= 40) {
       return RUN_TITLES.FULL_MARATHON_RUN_TITLE;
-    }
-    else if (runDistance > 20) {
+    } else if (runDistance > 20) {
       return RUN_TITLES.HALF_MARATHON_RUN_TITLE;
     }
   }
   return titleForTime(runHour) + titleForType(type);
-};
-
-const colorFromType = (workoutType: string): string => {
-  // console.log(`workoutType = ${workoutType} `);
-  switch (workoutType) {
-    case 'Run':
-      return RUN_COLOR;
-    case 'Trail Run':
-      return TRAIL_RUN_COLOR;
-    case 'Ride':
-    case 'Indoor Ride':
-      return RIDE_COLOR;
-    case 'VirtualRide':
-      return VIRTUAL_RIDE_COLOR;
-    case 'Hike':
-      return HIKE_COLOR;
-    case 'Walk':
-      return WALK_COLOR;
-    case 'Rowing':
-      return ROWING_COLOR;
-    case 'Swim':
-      return SWIM_COLOR;
-    case 'RoadTrip':
-      return ROAD_TRIP_COLOR;
-    case 'Flight':
-      return FLIGHT_COLOR;
-    case 'Kayaking':
-      return KAYAKING_COLOR;
-    case 'Snowboard':
-    case 'Ski':
-      return SNOWBOARD_COLOR;
-    default:
-      return MAIN_COLOR;
-  }
 };
 
 const filterYearRuns = (run: Activity, year: string) => {
@@ -371,31 +367,15 @@ const filterCityRuns = (run: Activity, city: string) => {
 const filterTitleRuns = (run: Activity, title: string) =>
   titleForRun(run) === title;
 
-const filterTypeRuns = (run: Activity, type: string) => {
-  switch (type) {
-    case 'Full Marathon':
-      return (run.type === 'Run' || run.type === 'Trail Run') && run.distance > 40000
-    case 'Half Marathon':
-      return (run.type === 'Run' || run.type === 'Trail Run') && run.distance < 40000 && run.distance > 20000
-    default:
-      return run.type === type
-  }
-}
-
 const filterAndSortRuns = (
   activities: Activity[],
   item: string,
   filterFunc: (_run: Activity, _bvalue: string) => boolean,
-  sortFunc: (_a: Activity, _b: Activity) => number,
-  item2: string | null,
-  filterFunc2: ((_run: Activity, _bvalue: string) => boolean) | null,
+  sortFunc: (_a: Activity, _b: Activity) => number
 ) => {
   let s = activities.slice();
   if (item !== 'Total') {
     s = activities.filter((run) => filterFunc(run, item));
-  }
-  if (filterFunc2 != null && item2 != null) {
-    s = s.filter((run) => filterFunc2(run, item2));
   }
   return s.sort(sortFunc);
 };
@@ -415,8 +395,6 @@ export {
   locationForRun,
   intComma,
   titleForRun,
-  typeForRun,
-  titleForType,
   filterYearRuns,
   filterCityRuns,
   filterTitleRuns,

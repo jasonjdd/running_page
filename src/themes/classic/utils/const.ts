@@ -122,6 +122,71 @@ const RUN_TITLES = {
   EVENING_RUN_TITLE,
   NIGHT_RUN_TITLE,
 };
+
+// workout type titles (personal customization)
+const TRAIN_TITLE = IS_CHINESE ? '力量训练' : 'Train';
+const JUMP_ROPE_TITLE = IS_CHINESE ? '跳绳' : 'JumpRope';
+const INDOOR_RIDE_TITLE = IS_CHINESE ? '室内骑行' : 'Indoor Ride';
+const VIRTUAL_RIDE_TITLE = IS_CHINESE ? '虚拟骑行' : 'Virtual Ride';
+const ROWING_TITLE = IS_CHINESE ? '划船' : 'Rowing';
+const KAYAKING_TITLE = IS_CHINESE ? '皮划艇' : 'Kayaking';
+const SNOWBOARD_TITLE = IS_CHINESE ? '单板滑雪' : 'Snowboard';
+const SKI_TITLE = IS_CHINESE ? '双板滑雪' : 'Ski';
+const ROAD_TRIP_TITLE = IS_CHINESE ? '自驾' : 'RoadTrip';
+const FLIGHT_TITLE = IS_CHINESE ? '飞行' : 'Flight';
+const WALK_TITLE = IS_CHINESE ? '散步' : 'CityWalk';
+
+// run time titles
+const MORNING_TIME_TITLE = IS_CHINESE ? '清晨' : 'Morning ';
+const MIDDAY_TIME_TITLE = IS_CHINESE ? '午间' : 'Midday ';
+const AFTERNOON_TIME_TITLE = IS_CHINESE ? '午后' : 'Afternoon ';
+const EVENING_TIME_TITLE = IS_CHINESE ? '傍晚' : 'Evening ';
+const NIGHT_TIME_TITLE = IS_CHINESE ? '夜晚' : 'Night ';
+
+const WORKOUT_TIME_TITLES = {
+  MORNING_TIME_TITLE,
+  MIDDAY_TIME_TITLE,
+  AFTERNOON_TIME_TITLE,
+  EVENING_TIME_TITLE,
+  NIGHT_TIME_TITLE,
+};
+
+const CHINESE_WEEK_STATISTIC_MESSAGE = (
+  weekRunCount: number,
+  weekRunDistance: number,
+  weekRunAvgHR: number,
+  weekRunAvgPace: string
+): string =>
+  `本周共计跑步${weekRunCount}次, 距离${weekRunDistance}km, 平均心率${weekRunAvgHR}bpm, 平均配速${weekRunAvgPace}/km`;
+const ENGLISH_WEEK_STATISTIC_MESSAGE = (
+  weekRunCount: number,
+  weekRunDistance: number,
+  weekRunAvgHR: number,
+  weekRunAvgPace: string
+): string =>
+  `Total ${weekRunCount} runs this week, distance ${weekRunDistance}km, average heart rate ${weekRunAvgHR}bpm, average pace ${weekRunAvgPace}/km`;
+
+const CHINESE_MONTH_STATISTIC_MESSAGE = (
+  monthRunCount: number,
+  monthRunDistance: number,
+  monthRunAvgHR: number,
+  monthRunAvgPace: string
+): string =>
+  `本月共计跑步${monthRunCount}次, 距离${monthRunDistance}km, 平均心率${monthRunAvgHR}bpm, 平均配速${monthRunAvgPace}/km`;
+const ENGLISH_MONTH_STATISTIC_MESSAGE = (
+  monthRunCount: number,
+  monthRunDistance: number,
+  monthRunAvgHR: number,
+  monthRunAvgPace: string
+): string =>
+  `Total ${monthRunCount} runs this month, distance ${monthRunDistance}km, average heart rate ${monthRunAvgHR}bpm, average pace ${monthRunAvgPace}/km`;
+
+const WEEK_STATISTIC_MESSAGE = IS_CHINESE
+  ? CHINESE_WEEK_STATISTIC_MESSAGE
+  : ENGLISH_WEEK_STATISTIC_MESSAGE;
+const MONTH_STATISTIC_MESSAGE = IS_CHINESE
+  ? CHINESE_MONTH_STATISTIC_MESSAGE
+  : ENGLISH_MONTH_STATISTIC_MESSAGE;
 const ACTIVITY_TOTAL = {
   ACTIVITY_COUNT_TITLE,
   MAX_DISTANCE_TITLE,
@@ -163,6 +228,20 @@ export {
   LOADING_TEXT,
   NO_ROUTE_DATA,
   INVALID_ROUTE_DATA,
+  TRAIN_TITLE,
+  JUMP_ROPE_TITLE,
+  INDOOR_RIDE_TITLE,
+  VIRTUAL_RIDE_TITLE,
+  ROWING_TITLE,
+  KAYAKING_TITLE,
+  SNOWBOARD_TITLE,
+  SKI_TITLE,
+  ROAD_TRIP_TITLE,
+  FLIGHT_TITLE,
+  WALK_TITLE,
+  WORKOUT_TIME_TITLES,
+  WEEK_STATISTIC_MESSAGE,
+  MONTH_STATISTIC_MESSAGE,
 };
 
 const nike = 'rgb(224,237,94)'; // if you want to change the main color, modify this value in src/styles/variables.scss

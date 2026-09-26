@@ -1,8 +1,9 @@
 import argparse
-from strava_sync import run_strava_sync
-from stravalib.exc import RateLimitTimeout, ActivityUploadFailed
+import time
 
-from utils import make_strava_client, get_strava_last_time, upload_file_to_strava
+from stravalib.exc import ActivityUploadFailed, RateLimitTimeout
+
+from utils import make_strava_client, upload_file_to_strava
 
 
 def upload_fit_file_to_strava(client, fit_file):
@@ -17,7 +18,7 @@ def upload_fit_file_to_strava(client, fit_file):
         upload_file_to_strava(client, fit_file, "fit")
 
     except ActivityUploadFailed as e:
-        print(f"Upload fit file {fit_file} failed error {str(e)}")
+        print(f"Upload fit file {fit_file} failed error {e!s}")
 
 
 if __name__ == "__main__":

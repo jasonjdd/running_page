@@ -1,4 +1,5 @@
-from config import JSON_FILE, SQL_FILE, FIT_FOLDER, GPX_FOLDER
+from config import FIT_FOLDER, JSON_FILE, SQL_FILE
+
 from utils import make_activities_file
 
 # make_activities_file(SQL_FILE, FIT_FOLDER, JSON_FILE, "fit")

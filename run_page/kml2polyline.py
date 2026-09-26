@@ -14,7 +14,7 @@ IN_CHINA = True
 
 def get_points_from_kml(k: kml):
     points = []
-    document = list(k.features())[0]
+    document = next(iter(k.features()))
     for folder in list(document.features()):
         if folder.geometry.geom_type == "LineString":
             points.extend(folder.geometry.coords)
@@ -28,11 +28,11 @@ def load_kml_file(k: kml):
             kml_string = f.read()
             # Read in the KML string
             k.from_string(kml_string)
-    except Exception as err:
+    except Exception as err:  # noqa: BLE001
         print(err)
-        raise "kml file not exist. please place import.kml into script/ folder"
-
-        exit(1)
+        raise Exception(  # noqa: TRY002
+            "kml file not exist. please place import.kml into script/ folder"
+        )
 
 
 def load_kml_data(track, k):
@@ -64,8 +64,8 @@ if __name__ == "__main__":
     # trip name
     track.name = "2020-10 Tibet Road Trip"
     # start/end time Year-Month-Day-Hour-Minute
-    track.start_time = datetime(2020, 9, 29, 10, 0)
-    track.end_time = datetime(2020, 10, 10, 18, 0)
+    track.start_time = datetime(2020, 9, 29, 10, 0)  # noqa: DTZ001
+    track.end_time = datetime(2020, 10, 10, 18, 0)  # noqa: DTZ001
     # total distance
     distance = 4000  # KM
     # total days
