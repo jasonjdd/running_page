@@ -23,4 +23,9 @@ _site/
 
 config.yaml
 .venv/
-tst/
+.pdm-python
+
+route.png
+route.svg
+
+.env
