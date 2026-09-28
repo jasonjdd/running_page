@@ -23033,5 +23033,39 @@
 "elevation_gain": 12.0,
 "workout_name": "",
 "streak": 5
+},
+{
+"run_id": 1790548340000,
+"name": "\u80f8\u80a9\u8180\u4e09\u5934",
+"distance": 0.0,
+"moving_time": "0:41:12.192000",
+"type": "training",
+"subtype": "strength_training",
+"start_date": "2026-09-27 22:32:20",
+"start_date_local": "2026-09-28 06:32:20",
+"location_country": "",
+"summary_polyline": null,
+"average_heartrate": 77.0,
+"average_speed": 0.0,
+"elevation_gain": 0.0,
+"workout_name": "",
+"streak": 6
+},
+{
+"run_id": 1790567552000,
+"name": "\u6d77\u6dc0\u533a \u9a91\u884c",
+"distance": 15534.71,
+"moving_time": "1:07:50.936000",
+"type": "Ride",
+"subtype": "generic",
+"start_date": "2026-09-28 03:52:32",
+"start_date_local": "2026-09-28 11:52:32",
+"location_country": "\u4e30\u79c0\u4e1c\u8def, \u897f\u5317\u65fa\u9547, \u6d77\u6dc0\u533a, \u5317\u4eac\u5e02, 100126, \u4e2d\u56fd",
+"summary_polyline": "o`rsFezmdULI\\Qb@Yr@Yj@Uz@YLGb@MLPNn@@FRhAJj@DZJh@X|@@FHZ@VHd@Jp@@D????????????LMTQBAHE??????????BAHCj@On@Qx@g@r@a@d@SLG|@c@LEf@Wx@_@t@_@p@[PKXMTM\\Sp@Yz@a@r@_@l@Wl@[p@[XOb@Ud@Sh@YPM????????????HG^YXQ\\OPIZQv@_@j@[FGVYf@WNGPGDAb@OFCLGRMd@Oh@[|@c@x@_@r@Un@W~@]x@Wp@Sv@Sx@Qt@SRGJCPGHCXGDAf@I^If@MFA????????????????@CDC`@Kt@Q\\IVIFA`AWp@Sn@Qh@In@Op@St@Qd@K~@Wp@Wl@Un@Wn@[t@_@FCb@UTMz@g@p@e@p@i@t@o@^_@^]f@c@LMTWn@q@n@m@j@k@r@o@bAcAr@q@JMXWLOVWDC??????@ERQ`@]DEh@i@x@w@r@q@v@y@n@i@t@k@d@[t@_@x@]ZMJAHEh@WXGRGv@QD?~@Kr@Il@Cb@G\\A|@GRAVAp@AR?@C?GGSQs@Iu@A{@Em@Ag@E}AAs@AUGyACu@A_@?SIiBCqAGsAIw@Ea@CW?IEa@G{@KoACe@ASAQIiAASKkA?IMsAIwAIeAMyAIqAIgAASC]I{@MqAIwAGw@?U?C????????CGCc@EeAGk@AIIoAGkAIo@GaAMcBIeA?GE_@@???????????A?AICU?EGo@?GMsAEc@Ea@Gw@CQKmAGg@Gq@Gu@CSMoAQgBC[Ik@IkAKy@KaAMeAOwAOsAEc@Gc@KgAOkAKiAASKo@CYOwAOyAOqAK_AIaAOkAE]Gm@A[Ek@SyAE[Gi@AGAGOiAIkAMaAKmACq@KgAGa@Ik@MkAMu@Eo@Im@Gg@E_@Q_BEi@CUUcBMkAQ{AOeAOeAUsAMu@Kk@AKEi@A_@O{@MkAOeAYoACIOeAOyASaBOmAASAi@Ee@AIWqACU?CCS?ACE????????AEAEQ_@[o@M_@Uo@Wo@IUg@cAe@cAa@aA[_Ac@sAOg@G[SoASgAQuASeAUiAAIU}AQcAMc@CI?MIe@My@GWI[AUM{@Mu@Ia@Ig@Q{@QcAAGEQCQGe@AGCKIo@Kq@IeACc@AS?G?????????????????????????AO@e@Li@Rk@VMD[XWn@Cf@@PHbAHdALhA?HDh@A|@AHGPINEFMJMHaA`@aAb@_@NOHaA`@_Ad@_A`@mAh@yAn@{@^_Ab@s@Zu@ZMF{@`@kAh@gAd@gAf@m@XWJw@XQF{@TqANeAH{@?gAGy@GMCoAYiAa@{@c@{@k@q@i@YW[[q@}@q@}@o@mAs@sA_@cAY_AEMMk@[eAQaAQwAOmAAIGqACiAAiA?}@?qAAgB@sA?I?sA@iAAICUIQSQQC_AIq@Ei@Cy@AQ@YHQHULMLEHCHGR?J?J@TFRDFJLLF^@`@WDGRk@BIVu@FSLi@DSH_@Hi@Ju@HmADmB?i@@w@?iA@s@?U?I?uA?S@aA@{@?S?qA@uA?wA?mA@iB@eB@{@?i@Eu@CWOu@S_ACII{@?{A@sBAsA@I@_B@qB@}A?wA@o@Aq@@uA?kA?]?sA@_B?sA?gB@uA?wABuAPoAHcA@uA@gA?S?s@As@@wA@cB?_B?kA@qA?c@?]?I?uA@mA?aB@i@?u@?}A@}A?oB?oA@_B?uA?_A@qA?_A?O?eA@aA?[?i@?q@@w@?k@?U@a@By@@WD{@@K?K@Y@Y?{A?Y?mB?K@w@@sA?i@?eA@wA?u@?SG{@WGIIAE?q@@u@?]?S@S?]?g@?iA@wA?oA@s@?]Au@?k@@kA@gBAuA@gB?sA@yA?sA?qABsB?cA?U@}A?s@@UASC}@EeAGMMIo@CaA@}@Bm@@WCw@?ODOBG@w@BKAWAi@Hm@@oADw@@aAB{@B_@@Q@EAS?SAYDs@Bg@BQ?G?iADy@Bq@Bk@?k@DQ?I?m@BG?cABO?c@@c@@k@Bs@@G@[@S?I?y@Dw@D",
+"average_heartrate": 91.0,
+"average_speed": 3.816,
+"elevation_gain": 21.0,
+"workout_name": "",
+"streak": 6
 }
 ]
