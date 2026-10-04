@@ -535,7 +535,7 @@ export const ContributionHeatmap = memo(function ContributionHeatmap({
                 </span>
               </div>
             )}
-            <div className="ml-5 flex">
+            <div className="ml-[19px] flex">
               {monthPositions.map((m, i) => {
                 const nextStart = monthPositions[i + 1]?.weekIdx ?? grid.length;
                 const span = nextStart - m.weekIdx;
