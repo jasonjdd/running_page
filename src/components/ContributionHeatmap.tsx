@@ -10,6 +10,7 @@ import {
 import { useLocale } from '../hooks/useLocale';
 
 const MAX_VISIBLE_YEARS = 10;
+const HEATMAP_WEEK_WIDTH_PX = 15;
 const weekdayIds = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
 interface HeatmapProps {
@@ -543,8 +544,8 @@ export const ContributionHeatmap = memo(function ContributionHeatmap({
                     key={m.label}
                     className="text-xs text-[var(--color-muted)]"
                     style={{
-                      width: `${span * 14}px`,
-                      minWidth: `${span * 14}px`,
+                      width: `${span * HEATMAP_WEEK_WIDTH_PX}px`,
+                      minWidth: `${span * HEATMAP_WEEK_WIDTH_PX}px`,
                     }}
                   >
                     {locale === 'zh'
