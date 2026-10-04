@@ -1,5 +1,7 @@
 import importlib
+from datetime import timedelta
 from pathlib import Path
+from types import SimpleNamespace
 
 import polyline
 import pytest
@@ -33,6 +35,84 @@ def _activities():
             "location_country": None,
         },
     ]
+
+
+def test_update_or_create_generates_name_when_workout_name_is_empty(
+    generator, tmp_path
+):
+    session = generator.init_db(tmp_path / "activities.db")
+    activity = SimpleNamespace(
+        id=1,
+        name="strength_training by garmin",
+        distance=5000,
+        moving_time=timedelta(minutes=30),
+        elapsed_time=timedelta(minutes=32),
+        type="Run",
+        subtype="Run",
+        start_date="2026-01-01 04:00:00",
+        start_date_local="2026-01-01 12:00:00",
+        start_latlng=None,
+        location_country="杭州市, 浙江省, 中国",
+        average_heartrate=140,
+        average_speed=2.7,
+        elevation_gain=10,
+        map=SimpleNamespace(summary_polyline=""),
+        workout_name="  ",
+    )
+    try:
+        assert generator.update_or_create_activity(session, activity)
+        session.commit()
+        saved = session.query(generator.Activity).one()
+        assert saved.name == "杭州市 · 跑步"
+
+        activity.type = "Walk"
+        activity.name = "another imported name"
+        assert not generator.update_or_create_activity(session, activity)
+        session.commit()
+        assert saved.name == "杭州市 · 步行"
+
+        activity.workout_name = "晨间训练"
+        activity.name = "FIT activity name"
+        assert not generator.update_or_create_activity(session, activity)
+        session.commit()
+        assert saved.name == "FIT activity name"
+    finally:
+        session.close()
+        session.bind.dispose()
+
+
+def test_load_regenerates_names_for_existing_activities(generator, tmp_path):
+    app = generator.Generator(tmp_path / "activities.db")
+    date = "2026-01-01 12:00:00"
+    try:
+        app.session.add(
+            generator.Activity(
+                run_id=1,
+                name="old imported label",
+                distance=5000,
+                moving_time=timedelta(minutes=30),
+                elapsed_time=timedelta(minutes=32),
+                type="Run",
+                subtype="Run",
+                start_date=date,
+                start_date_local=date,
+                location_country="杭州市, 浙江省, 中国",
+                summary_polyline="",
+                average_heartrate=140,
+                average_speed=2.7,
+                elevation_gain=10,
+                workout_name="",
+            )
+        )
+        app.session.commit()
+
+        result = app.load()
+
+        assert result[0]["name"] == "杭州市 · 跑步"
+        assert app.session.get(generator.Activity, 1).name == "杭州市 · 跑步"
+    finally:
+        app.session.close()
+        app.session.bind.dispose()
 
 
 @pytest.mark.parametrize("subtype", ["Run", "treadmill", "indoor"])

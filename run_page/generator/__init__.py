@@ -9,7 +9,7 @@ from polyline_processor import filter_out
 from sqlalchemy import func
 from synced_data_file_logger import save_synced_data_file_list
 
-from .db import Activity, init_db, update_or_create_activity
+from .db import Activity, generated_activity_name, init_db, update_or_create_activity
 
 IGNORE_BEFORE_SAVING = os.getenv(
     "IGNORE_BEFORE_SAVING",
@@ -143,6 +143,10 @@ class Generator:
         streak = 0
         last_date = None
         for activity in activities:
+            if not str(activity.workout_name or "").strip():
+                activity.name = generated_activity_name(
+                    activity.location_country, activity.type
+                )
             # 过滤掉相同起始时间的活动（个人定制：以本地开始时间为准去重）
             if activity.start_date_local in seen_dates:
                 continue

@@ -47,6 +47,60 @@ ACTIVITY_KEYS = [
     "workout_name",
 ]
 
+SPORT_NAME_MAP = {
+    "Run": "跑步",
+    "running": "跑步",
+    "Trail Run": "越野跑",
+    "Train": "力量训练",
+    "training": "力量训练",
+    "Ride": "骑行",
+    "cycling": "骑行",
+    "Indoor Ride": "室内骑行",
+    "VirtualRide": "虚拟骑行",
+    "Walk": "步行",
+    "walking": "步行",
+    "Hike": "徒步",
+    "hiking": "徒步",
+    "Swim": "游泳",
+    "swimming": "游泳",
+    "JumpRope": "跳绳",
+    "Rowing": "划船",
+    "Ski": "滑雪",
+    "skiing": "滑雪",
+    "Snowboard": "单板滑雪",
+}
+
+
+def generated_activity_name(location_country, sport_type):
+    location = (
+        str(location_country or "")
+        .strip()
+        .replace("，", ",")
+        .replace(":", ",")
+        .replace("：", ",")
+    )
+    parts = [
+        part.strip() for part in location.split(",") if part.strip()
+    ]
+    place = next(
+        (
+            part
+            for part in reversed(parts)
+            if part.endswith(("市", "县", "自治州", "特别行政区"))
+        ),
+        None,
+    )
+    if not place and parts:
+        place = parts[-3] if len(parts) >= 3 else parts[0]
+    if place and place.lower() in {"china", "中国"}:
+        place = None
+
+    sport = str(sport_type or "").strip()
+    sport_name = SPORT_NAME_MAP.get(sport, sport)
+    if place and sport_name:
+        return f"{place} · {sport_name}"
+    return place or sport_name
+
 
 class Activity(Base):
     __tablename__ = "activities"
@@ -86,6 +140,8 @@ class Activity(Base):
 def update_or_create_activity(session, run_activity):
     created = False
     try:
+        workout_name = getattr(run_activity, "workout_name", "")
+        has_workout_name = bool(str(workout_name or "").strip())
         activity = (
             # session.query(Activity).filter_by(run_id=int(run_activity.id)).first()
             session.query(Activity)
@@ -135,7 +191,11 @@ def update_or_create_activity(session, run_activity):
 
             activity = Activity(
                 run_id=run_activity.id,
-                name=run_activity.name,
+                name=(
+                    run_activity.name
+                    if has_workout_name
+                    else generated_activity_name(location_country, run_activity.type)
+                ),
                 distance=run_activity.distance,
                 moving_time=run_activity.moving_time,
                 elapsed_time=run_activity.elapsed_time,
@@ -155,7 +215,6 @@ def update_or_create_activity(session, run_activity):
             session.add(activity)
             created = True
         else:
-            activity.name = run_activity.name
             activity.distance = float(run_activity.distance)
             activity.moving_time = run_activity.moving_time
             activity.elapsed_time = run_activity.elapsed_time
@@ -164,9 +223,18 @@ def update_or_create_activity(session, run_activity):
             activity.average_heartrate = run_activity.average_heartrate
             activity.average_speed = float(run_activity.average_speed)
             activity.elevation_gain = current_elevation_gain
-            activity.workout_name = getattr(run_activity, "workout_name", "")
+            activity.workout_name = workout_name
             activity.summary_polyline = (
                 run_activity.map and run_activity.map.summary_polyline or ""
+            )
+            location_country = (
+                activity.location_country
+                or getattr(run_activity, "location_country", "")
+            )
+            activity.name = (
+                run_activity.name
+                if has_workout_name
+                else generated_activity_name(location_country, run_activity.type)
             )
     except Exception as e:  # noqa: BLE001
         print(f"something wrong with {run_activity.id}")
