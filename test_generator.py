@@ -115,6 +115,43 @@ def test_load_regenerates_names_for_existing_activities(generator, tmp_path):
         app.session.bind.dispose()
 
 
+@pytest.mark.parametrize(
+    ("workout_mesgs", "expected_name"),
+    [
+        ([{"wkt_name": "周末长跑"}, {"wkt_name": "备用训练"}], "周末长跑"),
+        ([{"wkt_name": ""}], ""),
+        (None, ""),
+    ],
+)
+def test_fit_workout_name_is_preserved_in_activity(
+    generator, workout_mesgs, expected_name
+):
+    from gpxtrackposter.track import Track
+
+    fit_messages = {
+        "session_mesgs": [
+            {
+                "start_time": 1_158_792_173,
+                "total_elapsed_time": 1800,
+                "total_distance": 5000,
+                "sport": "running",
+                "sub_sport": "generic",
+                "total_moving_time": 1750,
+                "avg_speed": 2.85,
+            }
+        ],
+        "record_mesgs": [],
+    }
+    if workout_mesgs is not None:
+        fit_messages["workout_mesgs"] = workout_mesgs
+
+    track = Track()
+    track._load_fit_data(fit_messages)
+
+    assert track.workout_name == expected_name
+    assert track.to_namedtuple("fit").workout_name == expected_name
+
+
 @pytest.mark.parametrize("subtype", ["Run", "treadmill", "indoor"])
 @pytest.mark.parametrize("filter_before_saving", [False, True])
 def test_load_preserves_source_routes_and_missing_gps(

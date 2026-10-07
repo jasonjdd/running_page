@@ -371,6 +371,14 @@ class Track:
     def _load_fit_data(self, fit: dict):
         _polylines = []
         self.polyline_container = []
+        self.workout_name = next(
+            (
+                name
+                for workout in fit.get("workout_mesgs", [])
+                if (name := str(workout.get("wkt_name") or "").strip())
+            ),
+            "",
+        )
         message = fit["session_mesgs"][0]
         self.start_time = datetime.datetime.fromtimestamp(
             (message["start_time"] + FIT_EPOCH_S), tz=datetime.UTC
