@@ -23220,5 +23220,22 @@
 "elevation_gain": 3.0,
 "workout_name": "",
 "streak": 5
+},
+{
+"run_id": 1791500407000,
+"name": "\u80cc\u540e\u675f\u4e8c\u5934",
+"distance": 0.0,
+"moving_time": "0:43:37.143000",
+"type": "training",
+"subtype": "strength_training",
+"start_date": "2026-10-08 23:00:07",
+"start_date_local": "2026-10-09 07:00:07",
+"location_country": "",
+"summary_polyline": null,
+"average_heartrate": 87.0,
+"average_speed": 0.0,
+"elevation_gain": 0.0,
+"workout_name": "\u80cc\u540e\u675f\u4e8c\u5934",
+"streak": 6
 }
 ]
